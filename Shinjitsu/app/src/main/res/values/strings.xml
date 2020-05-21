@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Shinjitsu</string>
+    <string name="Open" />
+    <string name="Close" />
 </resources>
