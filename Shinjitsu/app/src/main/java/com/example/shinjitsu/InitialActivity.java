@@ -1,5 +1,6 @@
 package com.example.shinjitsu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class InitialActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
+    Intent intent;
 
 
     @Override
@@ -39,10 +41,12 @@ public class InitialActivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.student:
-                        Toast.makeText(getApplicationContext(), "Alunos",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(getApplicationContext(), StudentActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.payment:
-                        Toast.makeText(getApplicationContext(), "Pagamentos",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(getApplicationContext(), PaymentActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.option:
                         Toast.makeText(getApplicationContext(), "Opções",Toast.LENGTH_SHORT).show();
