@@ -22,17 +22,21 @@ public class InitialActivity extends AppCompatActivity {
     Intent intent;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        InitialFragment fragment = new InitialFragment();
-        fragmentTransaction.add(R.id.fragment1, fragment);
-        fragmentTransaction.commit();
+
+//        InitialFragment fragment = new InitialFragment();
+//        fragmentTransaction.add(R.id.fragment1, fragment);
+//        fragmentTransaction.commit();
+
+//        InitialFragment fragment2 = new InitialFragment();
+//        fragmentTransaction.add(R.id.fragment2, fragment2);
+//        fragmentTransaction.commit();
 
         drawerLayout = (DrawerLayout)findViewById(R.id.activity_initial);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.Open, R.string.Close);
@@ -50,12 +54,22 @@ public class InitialActivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.student:
-                        intent = new Intent(getApplicationContext(), StudentActivity.class);
-                        startActivity(intent);
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        InitialFragment fragment = new InitialFragment();
+                        fragmentTransaction.add(R.id.fragment1, fragment);
+                        fragmentTransaction.commit();
+//                        intent = new Intent(getApplicationContext(), StudentActivity.class);
+//                        startActivity(intent);
                         break;
                     case R.id.payment:
-                        intent = new Intent(getApplicationContext(), PaymentActivity.class);
-                        startActivity(intent);
+                        FragmentManager fragmentManager2 = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+                        InitialFragment fragment2 = new InitialFragment();
+                        fragmentTransaction2.add(R.id.fragment2, fragment2);
+                        fragmentTransaction2.commit();
+//                        intent = new Intent(getApplicationContext(), PaymentActivity.class);
+//                        startActivity(intent);
                         break;
                     case R.id.option:
                         Toast.makeText(getApplicationContext(), "Opções",Toast.LENGTH_SHORT).show();
@@ -63,9 +77,12 @@ public class InitialActivity extends AppCompatActivity {
                     default:
                         return true;
                 }
+
                 return true;
+
             }
         });
+
     }
 
     @Override
@@ -76,4 +93,6 @@ public class InitialActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
