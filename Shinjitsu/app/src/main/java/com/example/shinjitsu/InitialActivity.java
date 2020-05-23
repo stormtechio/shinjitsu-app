@@ -12,6 +12,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.shinjitsu.fragments.PaymentsFragment;
+import com.example.shinjitsu.fragments.StudentFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class InitialActivity extends AppCompatActivity {
@@ -19,8 +21,9 @@ public class InitialActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
+    public FragmentManager fragmentManager;
+    public FragmentTransaction fragmentTransaction;
     Intent intent;
-
 
 
     @Override
@@ -28,16 +31,9 @@ public class InitialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
 
-
-
-//        InitialFragment fragment = new InitialFragment();
-//        fragmentTransaction.add(R.id.fragment1, fragment);
-//        fragmentTransaction.commit();
-
-//        InitialFragment fragment2 = new InitialFragment();
-//        fragmentTransaction.add(R.id.fragment2, fragment2);
-//        fragmentTransaction.commit();
-
+        // Criando apenas uma instancia de um gerenciador de fragmentos
+        fragmentManager = getSupportFragmentManager();
+        
         drawerLayout = (DrawerLayout)findViewById(R.id.activity_initial);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.Open, R.string.Close);
 
@@ -51,25 +47,26 @@ public class InitialActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+
+                // Para cada seleção, cria-se uma nova transação;
+                fragmentTransaction = fragmentManager.beginTransaction();
+
                 switch(id)
                 {
                     case R.id.student:
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        InitialFragment fragment = new InitialFragment();
-                        fragmentTransaction.add(R.id.fragment1, fragment);
-                        fragmentTransaction.commit();
-//                        intent = new Intent(getApplicationContext(), StudentActivity.class);
-//                        startActivity(intent);
+
+                        // Instanciação de algum fragmento
+                        StudentFragment studentFragment = new StudentFragment();
+                        // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
+                        fragmentTransaction.replace(R.id.content_fragments, studentFragment);
+
                         break;
                     case R.id.payment:
-                        FragmentManager fragmentManager2 = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-                        InitialFragment fragment2 = new InitialFragment();
-                        fragmentTransaction2.add(R.id.fragment2, fragment2);
-                        fragmentTransaction2.commit();
-//                        intent = new Intent(getApplicationContext(), PaymentActivity.class);
-//                        startActivity(intent);
+                        // Instanciação de algum fragmento
+                        PaymentsFragment paymentsFragment = new PaymentsFragment();
+                        // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
+                        fragmentTransaction.replace(R.id.content_fragments, paymentsFragment);
+
                         break;
                     case R.id.option:
                         Toast.makeText(getApplicationContext(), "Opções",Toast.LENGTH_SHORT).show();
@@ -77,6 +74,11 @@ public class InitialActivity extends AppCompatActivity {
                     default:
                         return true;
                 }
+
+                // Pilha de execução dos fragments, nesse caso,por padrão usa-se o null
+                fragmentTransaction.addToBackStack(null);
+                // Commita a transação
+                fragmentTransaction.commit();
 
                 return true;
 
