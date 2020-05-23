@@ -28,8 +28,6 @@ public class InitialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
 
-
-
 //        InitialFragment fragment = new InitialFragment();
 //        fragmentTransaction.add(R.id.fragment1, fragment);
 //        fragmentTransaction.commit();
