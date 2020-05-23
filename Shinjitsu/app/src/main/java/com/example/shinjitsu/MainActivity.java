@@ -1,15 +1,13 @@
 package com.example.shinjitsu;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.view.View;
-import android.content.Intent;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                     intent = new Intent(getApplicationContext(), InitialActivity.class);
                     startActivity(intent);
+
                 }else{
 
                     toast = Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos", Toast.LENGTH_SHORT);
