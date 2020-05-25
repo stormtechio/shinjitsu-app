@@ -59,14 +59,12 @@ public class InitialActivity extends AppCompatActivity {
                         StudentFragment studentFragment = new StudentFragment();
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, studentFragment);
-
                         break;
                     case R.id.payment:
                         // Instanciação de algum fragmento
                         PaymentsFragment paymentsFragment = new PaymentsFragment();
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, paymentsFragment);
-
                         break;
                     case R.id.option:
                         Toast.makeText(getApplicationContext(), "Opções",Toast.LENGTH_SHORT).show();
