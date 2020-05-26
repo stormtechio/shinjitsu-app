@@ -2,6 +2,7 @@ package com.example.shinjitsu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class InitialActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         drawerLayout = (DrawerLayout)findViewById(R.id.activity_initial);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.Open, R.string.Close);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -59,15 +60,18 @@ public class InitialActivity extends AppCompatActivity {
                         StudentFragment studentFragment = new StudentFragment();
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, studentFragment);
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     case R.id.payment:
                         // Instanciação de algum fragmento
                         PaymentsFragment paymentsFragment = new PaymentsFragment();
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, paymentsFragment);
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     case R.id.option:
                         Toast.makeText(getApplicationContext(), "Opções",Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     default:
                         return true;
