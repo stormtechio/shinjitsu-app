@@ -27,6 +27,7 @@ public class InitialActivity extends AppCompatActivity {
     Intent intent;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,30 +49,30 @@ public class InitialActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-
+                drawerLayout.closeDrawer(Gravity.LEFT);
                 // Para cada seleção, cria-se uma nova transação;
                 fragmentTransaction = fragmentManager.beginTransaction();
 
                 switch(id)
                 {
                     case R.id.student:
+                       // drawerLayout.closeDrawer(Gravity.LEFT);
 
                         // Instanciação de algum fragmento
                         StudentFragment studentFragment = new StudentFragment();
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, studentFragment);
-                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     case R.id.payment:
+                       // drawerLayout.closeDrawer(Gravity.LEFT);
                         // Instanciação de algum fragmento
                         PaymentsFragment paymentsFragment = new PaymentsFragment();
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, paymentsFragment);
-                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     case R.id.option:
+                      //  drawerLayout.closeDrawer(Gravity.LEFT);
                         Toast.makeText(getApplicationContext(), "Opções",Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     default:
                         return true;

@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutUser"
+        android:id="@+id/text_input_layout_user"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:paddingTop="50sp"
@@ -16,14 +16,14 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditUser"
+            android:id="@+id/edit_text_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/user" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPassword"
+        android:id="@+id/text_input_layout_password"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:paddingTop="110sp"
@@ -32,7 +32,7 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditPassword"
+            android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -40,7 +40,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
@@ -48,6 +48,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout_password"
         app:layout_constraintVertical_bias="0.281" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@
             tools:layout_editor_absoluteY="0dp">
 
             <TextView
-                android:id="@+id/textviewIdentification"
+                android:id="@+id/textview_identification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16sp"
@@ -38,6 +38,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_name"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/name" />
@@ -50,6 +51,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_age"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/age"
@@ -62,6 +64,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_responsible"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/responsible" />
@@ -82,6 +85,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_street"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/street" />
@@ -93,6 +97,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_neighborhood"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/neighborhood" />
@@ -104,9 +109,10 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_city"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:hint="Cidade" />
+                    android:hint="@string/city" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,6 +121,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_state"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/state" />
@@ -126,6 +133,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_number"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/number"
@@ -138,6 +146,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_complement"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/complement" />
@@ -158,6 +167,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_cellphone"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/cell_phone"
@@ -167,10 +177,10 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingRight="16dp"
-                android:inputType="phone">
+                android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_email"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/email"
@@ -184,6 +194,7 @@
                 android:paddingRight="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_text_phone"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/phone"
@@ -204,10 +215,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <RadioGroup
+                    android:id="@+id/radio_group_disease"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/radioButtonYesDisease"
+                        android:id="@+id/radio_button_yes_disease"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/yes"
@@ -216,7 +228,7 @@
                         android:layout_alignParentLeft="true"
                          />
                     <RadioButton
-                        android:id="@+id/radioButtonNotDiasease"
+                        android:id="@+id/radio_button_not_diasease"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:text="@string/not"
@@ -226,7 +238,6 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/textViewChronicDisease"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16sp"
@@ -239,10 +250,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <RadioGroup
+                    android:id="@+id/radio_group_chronic_disease"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/radioButtonYesChronicDisease"
+                        android:id="@+id/radio_button_yes_chronic_disease"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/yes"
@@ -251,7 +263,7 @@
                         android:layout_alignParentLeft="true"
                         />
                     <RadioButton
-                        android:id="@+id/radioButtonNotChronicDisease"
+                        android:id="@+id/radio_button_not_chronic_disease"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:text="@string/not"
@@ -261,7 +273,6 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/textViewSurgery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16sp"
@@ -274,10 +285,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <RadioGroup
+                    android:id="@+id/radio_group_surgery"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <RadioButton
-                        android:id="@+id/radioButtonSimSurgery"
+                        android:id="@+id/radio_button_yes_surgery"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sim"
@@ -286,7 +298,7 @@
                         android:layout_alignParentLeft="true"
                        />
                     <RadioButton
-                        android:id="@+id/radioButtonNotSurgery"
+                        android:id="@+id/radio_button_not_surgery"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:text="Não"
@@ -294,7 +306,7 @@
                         />
                 </RadioGroup>
                 <Button
-                    android:id="@+id/buttonRegister"
+                    android:id="@+id/button_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/register"
