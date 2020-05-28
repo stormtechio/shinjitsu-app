@@ -29,6 +29,14 @@
     <string name="options">Mais Opções</string>
     <string name="register">Cadastrar</string>
     <string name="surgery">Você fez alguma cirurgia recentemente?</string>
-
+    <string name="states">Estados</string>
+    <string-array name="states_array">
+        <item></item>
+        <item>CE</item>
+        <item>PI</item>
+        <item>DF</item>
+        <item>SP</item>
+        <item>RJ</item>
+    </string-array>
 
 </resources>
