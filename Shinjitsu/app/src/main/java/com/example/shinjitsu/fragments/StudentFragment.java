@@ -58,6 +58,10 @@ public class StudentFragment extends Fragment {
 
     Spinner spinnerStates;
 
+    RadioButton radioButtonChronicDisease;
+    RadioButton radioButtonDisease;
+    RadioButton radioButtonSurgery;
+
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -77,15 +81,9 @@ public class StudentFragment extends Fragment {
                         setStudentEntity();
                         boolean result = sendData();
                         Toast.makeText(getContext(), "Aluno cadastrado", Toast.LENGTH_LONG).show();
-
+                        clearFields();
                     }
                 }
-
-
-
-
-               // Log.e("OOOOOOIIIIINAME", studentEntity.getState());
-                //Toast.makeText(getContext(), "Aluno Cadastrado", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -200,9 +198,9 @@ public class StudentFragment extends Fragment {
         int chronicDiseaseRadioButtonId = radioGroupChronicDisease.getCheckedRadioButtonId();
         int surgeryRadioButtonId = radioGroupSurgery.getCheckedRadioButtonId();
 
-        RadioButton radioButtonChronicDisease = view.findViewById(chronicDiseaseRadioButtonId);
-        RadioButton radioButtonDisease = view.findViewById(diseaseRadioButtonId);
-        RadioButton radioButtonSurgery = view.findViewById(surgeryRadioButtonId);
+        radioButtonChronicDisease = view.findViewById(chronicDiseaseRadioButtonId);
+        radioButtonDisease = view.findViewById(diseaseRadioButtonId);
+        radioButtonSurgery = view.findViewById(surgeryRadioButtonId);
 
         try {
             if(radioButtonSurgery.getText().toString().equals("Sim")){
@@ -262,6 +260,26 @@ public class StudentFragment extends Fragment {
          */
 
         return true;
+
+    }
+
+    private void clearFields(){
+
+        editTextName.setText("");
+        editTextAge.setText("");
+        editTextResponsible.setText("");
+        editTextStreet.setText("");
+        editTextNeighborhood.setText("");
+        editTextCity.setText("");
+        spinnerStates.setSelection(0);
+        editTextNumber.setText("");
+        editTextComplement.setText("");
+        editTextCellphone.setText("");
+        editTextEmail.setText("");
+        editTextPhone.setText("");
+        radioButtonChronicDisease.setChecked(false);
+        radioButtonDisease.setChecked(false);
+        radioButtonSurgery.setChecked(false);
 
     }
 }
