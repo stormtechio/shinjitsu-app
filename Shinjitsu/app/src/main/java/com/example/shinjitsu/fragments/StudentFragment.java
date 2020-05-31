@@ -72,7 +72,7 @@ public class StudentFragment extends Fragment {
 
                 studentEntity = new StudentEntity();
 
-                getText();
+                getTextView();
                 getTextRadioButton(studentView);
                 setStudentEntity();
 
@@ -113,7 +113,7 @@ public class StudentFragment extends Fragment {
         spinnerStates.setAdapter(adapterStates);
     }
 
-    private void getText(){
+    private void getTextView(){
 
         if(editTextName.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo nome está vazio", Toast.LENGTH_SHORT).show();
@@ -132,7 +132,7 @@ public class StudentFragment extends Fragment {
             return;
         }
         responsible = editTextResponsible.getText().toString();
-        
+
         if(editTextStreet.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo rua está vazio", Toast.LENGTH_SHORT).show();
             return;
