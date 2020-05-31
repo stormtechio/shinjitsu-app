@@ -58,6 +58,10 @@ public class StudentFragment extends Fragment {
 
     Spinner spinnerStates;
 
+    RadioButton radioButtonChronicDisease;
+    RadioButton radioButtonDisease;
+    RadioButton radioButtonSurgery;
+
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -72,12 +76,15 @@ public class StudentFragment extends Fragment {
 
                 studentEntity = new StudentEntity();
 
-                getTextView();
-                getTextRadioButton(studentView);
-                setStudentEntity();
+                if(getText()){
+                    if(getTextRadioButton(studentView)){
+                        setStudentEntity();
+                        boolean result = sendData();
+                        Toast.makeText(getContext(), "Aluno cadastrado", Toast.LENGTH_LONG).show();
+                        clearFields();
+                    }
+                }
 
-               // Log.e("OOOOOOIIIIINAME", studentEntity.getState());
-                Toast.makeText(getContext(), "Aluno Cadastrado", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -113,86 +120,90 @@ public class StudentFragment extends Fragment {
         spinnerStates.setAdapter(adapterStates);
     }
 
-    private void getTextView(){
+
+    private boolean getText(){
+
 
         if(editTextName.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo nome está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         name = editTextName.getText().toString();
 
         if(editTextAge.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo idade está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         age = Integer.parseInt(editTextAge.getText().toString());
 
         if(editTextResponsible.getText().toString().equals("") && age < 18){
             Toast.makeText(getContext(), "O campo responsável está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         responsible = editTextResponsible.getText().toString();
 
         if(editTextStreet.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo rua está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         street = editTextStreet.getText().toString();
 
         if(editTextNeighborhood.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo bairro está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         neighborhood = editTextNeighborhood.getText().toString();
 
         if(editTextCity.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo cidade está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         city = editTextCity.getText().toString();
 
         if(spinnerStates.getSelectedItem().toString().equals("")){
             Toast.makeText(getContext(), "O campo estado está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         state = spinnerStates.getSelectedItem().toString();
 
         if(editTextNumber.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo número está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         number = Integer.parseInt(editTextNumber.getText().toString());
 
         if(editTextComplement.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo complemento está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         complement = editTextComplement.getText().toString();
 
         if(editTextCellphone.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo celular está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         cellphone = editTextCellphone.getText().toString();
 
         if(editTextEmail.getText().toString().equals("")){
             Toast.makeText(getContext(), "O campo email está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         email = editTextEmail.getText().toString();
 
         phone = editTextPhone.getText().toString();
+
+        return true;
     }
 
-    private void getTextRadioButton(View view){
+    private boolean getTextRadioButton(View view){
 
         int diseaseRadioButtonId = radioGroupDisease.getCheckedRadioButtonId();
         int chronicDiseaseRadioButtonId = radioGroupChronicDisease.getCheckedRadioButtonId();
         int surgeryRadioButtonId = radioGroupSurgery.getCheckedRadioButtonId();
 
-        RadioButton radioButtonChronicDisease = view.findViewById(chronicDiseaseRadioButtonId);
-        RadioButton radioButtonDisease = view.findViewById(diseaseRadioButtonId);
-        RadioButton radioButtonSurgery = view.findViewById(surgeryRadioButtonId);
+        radioButtonChronicDisease = view.findViewById(chronicDiseaseRadioButtonId);
+        radioButtonDisease = view.findViewById(diseaseRadioButtonId);
+        radioButtonSurgery = view.findViewById(surgeryRadioButtonId);
 
         try {
             if(radioButtonSurgery.getText().toString().equals("Sim")){
@@ -202,7 +213,7 @@ public class StudentFragment extends Fragment {
             }
         } catch(NullPointerException erro){
             Toast.makeText(getContext(), "O campo cirurgia está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         try {
             if(radioButtonChronicDisease.getText().toString().equals("Sim")){
@@ -212,7 +223,7 @@ public class StudentFragment extends Fragment {
             }
         } catch(NullPointerException erro){
             Toast.makeText(getContext(), "O campo doença crônica está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         try {
             if(radioButtonDisease.getText().toString().equals("Sim")){
@@ -222,8 +233,10 @@ public class StudentFragment extends Fragment {
             }
         } catch(NullPointerException erro){
             Toast.makeText(getContext(), "O campo doença está vazio", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
+
+        return true;
     }
     private void setStudentEntity(){
 
@@ -241,5 +254,35 @@ public class StudentFragment extends Fragment {
         studentEntity.setDisease(disease);
         studentEntity.setChronicDisease(chronicDisease);
         studentEntity.setSurgery(surgery);
+
+    }
+
+    private boolean sendData() {
+        /**
+         * Aqui será implementado o envio para o controller... se a resposta for positiva, então retorna um boolean True, caso contrário, false...
+         */
+
+        return true;
+
+    }
+
+    private void clearFields(){
+
+        editTextName.setText("");
+        editTextAge.setText("");
+        editTextResponsible.setText("");
+        editTextStreet.setText("");
+        editTextNeighborhood.setText("");
+        editTextCity.setText("");
+        spinnerStates.setSelection(0);
+        editTextNumber.setText("");
+        editTextComplement.setText("");
+        editTextCellphone.setText("");
+        editTextEmail.setText("");
+        editTextPhone.setText("");
+        radioButtonChronicDisease.setChecked(false);
+        radioButtonDisease.setChecked(false);
+        radioButtonSurgery.setChecked(false);
+
     }
 }
