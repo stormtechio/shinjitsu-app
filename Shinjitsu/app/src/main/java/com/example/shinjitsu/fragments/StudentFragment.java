@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.shinjitsu.R;
-import com.example.shinjitsu.models.StudentEntity;
+import com.example.shinjitsu.entities.StudentEntity;
 
 public class StudentFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.example.shinjitsu.models;
+package com.example.shinjitsu.entities;
 
 public class StudentEntity {
 
