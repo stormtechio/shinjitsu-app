@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">Shinjitsu</string>
+    <string name="open" />
+    <string name="close" />
+    <string name="identification"> Identificação</string>
+    <string name="name">Nome</string>
+    <string name="age">Idade</string>
+    <string name="responsible">Responsável</string>
+    <string name="address">Endereço</string>
+    <string name="street">Rua</string>
+    <string name="neighborhood">Bairro</string>
+    <string name="city">Cidade</string>
+    <string name="state">Estado</string>
+    <string name="number">Número</string>
+    <string name="complement">Complemento</string>
+    <string name="contact">Contato</string>
+    <string name="cell_phone">Celular</string>
+    <string name="email">Email</string>
+    <string name="phone">Telefone Fixo</string>
+    <string name="disease">Possui alguma doença?</string>
+    <string name="chronic_disease">Possui alguma doença crônica?</string>
+    <string name="yes">Sim</string>
+    <string name="not">Não</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="login">Login</string>
+    <string name="students">Alunos</string>
+    <string name="payments">Pagamentos</string>
+    <string name="options">Mais Opções</string>
+    <string name="register">Cadastrar</string>
+    <string name="surgery">Você fez alguma cirurgia recentemente?</string>
+    <string name="states">Estados</string>
+    <string-array name="states_array">
+        <item></item>
+        <item>CE</item>
+        <item>PI</item>
+        <item>DF</item>
+        <item>SP</item>
+        <item>RJ</item>
+    </string-array>
+
 </resources>
