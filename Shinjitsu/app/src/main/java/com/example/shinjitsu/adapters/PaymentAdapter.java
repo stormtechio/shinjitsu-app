@@ -20,7 +20,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
     List<PaymentEntity> payments;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
+
         public TextView name;
         public CardView cardView;
 
