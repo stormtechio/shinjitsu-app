@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         editTextUser = (EditText) findViewById(R.id.edit_text_user);
         editTextPassword = (EditText) findViewById(R.id.edit_text_password);
@@ -52,14 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
-
-
-
 
 
     }
