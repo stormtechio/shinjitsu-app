@@ -37,6 +37,11 @@ public class PaymentsFragment extends Fragment{
         paymentEntity3.setName("Luna");
         paymentEntity4.setName("Einstein");
 
+        paymentEntity.setStatus(true);
+        paymentEntity2.setStatus(false);
+        paymentEntity3.setStatus(true);
+        paymentEntity4.setStatus(true);
+
         payments.add(paymentEntity);
         payments.add(paymentEntity2);
         payments.add(paymentEntity3);

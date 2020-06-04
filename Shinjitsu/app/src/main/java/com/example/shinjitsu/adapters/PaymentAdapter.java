@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,15 +20,18 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
 
     List<PaymentEntity> payments;
 
+
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView name;
         public CardView cardView;
+        public ImageView imageView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name_text);
             cardView = itemView.findViewById(R.id.cardview_payments);
+            imageView = itemView.findViewById(R.id.imageview_shape);
         }
     }
 
@@ -50,7 +54,16 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         final Context context = holder.cardView.getContext();
-        holder.name.setText(payments.get(position).getName());
+        PaymentEntity payment = payments.get(position);
+
+        holder.name.setText(payment.getName());
+
+        if(payment.isStatus()){
+            holder.imageView.setImageResource(R.drawable.green_shape);
+        }else{
+            holder.imageView.setImageResource(R.drawable.red_shape);
+        }
+
 
     }
 
@@ -58,7 +71,5 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
     public int getItemCount() {
         return payments.size();
     }
-
-
 
 }
