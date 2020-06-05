@@ -26,19 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         editTextUser = (EditText) findViewById(R.id.edit_text_user);
         editTextPassword = (EditText) findViewById(R.id.edit_text_password);
         buttonLogin = (Button) findViewById(R.id.button_login);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
                 user = editTextUser.getText().toString();
                 password = editTextPassword.getText().toString();
-
-//                Log.e("OOOOOOIIIII",user);
-//                Log.e("OOOOOOIIIII",password);
 
                 if(user.equals("ayrton") && password.equals("123")){
 
@@ -50,16 +47,8 @@ public class MainActivity extends AppCompatActivity {
                     toast = Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos", Toast.LENGTH_SHORT);
                     toast.show();
                 }
-            }
+                    }
         });
-
-
-
-
-
-
-
-
 
 
     }
