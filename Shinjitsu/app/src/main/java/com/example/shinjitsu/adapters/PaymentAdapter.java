@@ -1,5 +1,6 @@
 package com.example.shinjitsu.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,10 +52,10 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         final Context context = holder.cardView.getContext();
-        PaymentEntity payment = payments.get(position);
+        final PaymentEntity payment = payments.get(position);
 
         holder.name.setText(payment.getName());
 
@@ -64,6 +65,17 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
             holder.imageView.setImageResource(R.drawable.red_shape);
         }
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(payment.getName()).setTitle("Detalhe do Pagamento");
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
 
     }
 
