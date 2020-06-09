@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,6 +21,7 @@ import java.util.List;
 public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHolder> {
 
     List<PaymentEntity> payments;
+
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -52,7 +54,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
         final Context context = holder.cardView.getContext();
         final PaymentEntity payment = payments.get(position);
@@ -69,9 +71,26 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
             @Override
             public void onClick(View view) {
 
+                LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                View viewDialog = layoutInflater.inflate(R.layout.dialog, null);
+
+                viewDialog.findViewById(R.id.button_pay).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if(payment.isStatus() == false){
+                            holder.imageView.setImageResource(R.drawable.green_shape);
+                            Toast.makeText(context, "Pago", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(context, "Já foi pago", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage(payment.getName()).setTitle("Detalhe do Pagamento");
-
+                builder.setView(viewDialog);
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
             }

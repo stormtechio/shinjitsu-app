@@ -30,6 +30,7 @@
     <string name="register">Cadastrar</string>
     <string name="surgery">Você fez alguma cirurgia recentemente?</string>
     <string name="states">Estados</string>
+    <string name="pay">Pagar</string>
     <string-array name="states_array">
         <item></item>
         <item>CE</item>
