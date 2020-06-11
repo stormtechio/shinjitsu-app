@@ -67,11 +67,11 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
             @Override
             public void onClick(View view) {
 
-                LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage(payment.getName()).setTitle("Detalhe do Pagamento");
 
                 if(payment.isStatus() == false) {
+                    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View viewDialog = layoutInflater.inflate(R.layout.dialog, null);
 
                     viewDialog.findViewById(R.id.button_pay).setOnClickListener(new View.OnClickListener() {

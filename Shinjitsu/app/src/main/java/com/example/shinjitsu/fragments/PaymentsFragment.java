@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shinjitsu.R;
 import com.example.shinjitsu.adapters.PaymentAdapter;
+import com.example.shinjitsu.collections.ReverseByName;
+import com.example.shinjitsu.collections.SortByName;
 import com.example.shinjitsu.entities.PaymentEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PaymentsFragment extends Fragment{
@@ -26,11 +32,12 @@ public class PaymentsFragment extends Fragment{
     PaymentEntity paymentEntity3 = new PaymentEntity();
     PaymentEntity paymentEntity4 = new PaymentEntity();
     List<PaymentEntity> payments = new ArrayList<PaymentEntity>();
+    Spinner filterSpinner;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         paymentEntity.setName("Saori");
         paymentEntity2.setName("Ayrton");
@@ -48,15 +55,63 @@ public class PaymentsFragment extends Fragment{
         payments.add(paymentEntity4);
 
         final View paymentsView = inflater.inflate(R.layout.payments_fragment, container, false);
-        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
 
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new PaymentAdapter(payments);
-        recyclerView.setAdapter(mAdapter);
+        filterSpinner = paymentsView.findViewById(R.id.filter_spinner);
+
+        adapterFilter();
+
+        filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                switch (i){
+                    case 0:
+                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                        recyclerView.setHasFixedSize(true);
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        mAdapter = new PaymentAdapter(payments);
+                        recyclerView.setAdapter(mAdapter);
+                        break;
+                    case 1:
+                        Collections.sort(payments, new SortByName());
+                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                        recyclerView.setHasFixedSize(true);
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        mAdapter = new PaymentAdapter(payments);
+                        recyclerView.setAdapter(mAdapter);
+                        break;
+                    case 2:
+                        Collections.sort(payments, new ReverseByName());
+                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                        recyclerView.setHasFixedSize(true);
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        mAdapter = new PaymentAdapter(payments);
+                        recyclerView.setAdapter(mAdapter);
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
 
         return paymentsView;
     }
 
+    private void adapterFilter(){
+
+        ArrayAdapter<CharSequence> adapterStates = ArrayAdapter.createFromResource(getContext(),
+                R.array.order_array, android.R.layout.simple_spinner_item);
+        adapterStates.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterSpinner.setAdapter(adapterStates);
+    }
+
 }
+
+
+
