@@ -33,6 +33,7 @@ public class PaymentsFragment extends Fragment{
     PaymentEntity paymentEntity4 = new PaymentEntity();
     List<PaymentEntity> payments = new ArrayList<PaymentEntity>();
     Spinner filterSpinner;
+    Spinner paySpinner;
 
 
     @Override
@@ -57,8 +58,12 @@ public class PaymentsFragment extends Fragment{
         final View paymentsView = inflater.inflate(R.layout.payments_fragment, container, false);
 
         filterSpinner = paymentsView.findViewById(R.id.filter_spinner);
+        paySpinner = paymentsView.findViewById(R.id.filter_pay_spinner);
+
+
 
         adapterFilter();
+        adapterPay();
 
         filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -105,12 +110,19 @@ public class PaymentsFragment extends Fragment{
 
     private void adapterFilter(){
 
-        ArrayAdapter<CharSequence> adapterStates = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> adapterFilter = ArrayAdapter.createFromResource(getContext(),
                 R.array.order_array, android.R.layout.simple_spinner_item);
-        adapterStates.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        filterSpinner.setAdapter(adapterStates);
+        adapterFilter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterSpinner.setAdapter(adapterFilter);
     }
 
+    private void adapterPay(){
+
+        ArrayAdapter<CharSequence> adapterPay = ArrayAdapter.createFromResource(getContext(),
+                R.array.pay_array, android.R.layout.simple_spinner_item);
+        adapterPay.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterSpinner.setAdapter(adapterPay);
+    }
 }
 
 

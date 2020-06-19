@@ -46,6 +46,12 @@
         <item>Z-A</item>
 
     </string-array>
+    <string-array name="pay_array">
+        <item></item>
+        <item>Pago</item>
+        <item>Não Pago</item>
+
+    </string-array>
 
 
 </resources>
