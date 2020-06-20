@@ -105,6 +105,70 @@ public class PaymentsFragment extends Fragment{
             }
         });
 
+
+
+        paySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                switch (i){
+                    case 0:
+                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                        recyclerView.setHasFixedSize(true);
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        mAdapter = new PaymentAdapter(payments);
+                        recyclerView.setAdapter(mAdapter);
+                        break;
+                    case 1:
+                       //payments.remove(i).isStatus();
+                        for (PaymentEntity p: payments) {
+                            if(p.isStatus() == true){
+
+                                ArrayList<PaymentEntity> pay = new ArrayList<>();
+                                pay.add(p);
+                                
+                                recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                                recyclerView.setHasFixedSize(true);
+                                layoutManager = new LinearLayoutManager(getContext());
+                                recyclerView.setLayoutManager(layoutManager);
+                                mAdapter = new PaymentAdapter(pay);
+                                recyclerView.setAdapter(mAdapter);
+                                break;
+                            }
+
+                        }
+
+                    case 2:
+                        for (PaymentEntity p: payments) {
+                            if(p.isStatus()){
+
+                                ArrayList<PaymentEntity> notPay = new ArrayList<>();
+                                notPay.add(p);
+
+                                recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                                recyclerView.setHasFixedSize(true);
+                                layoutManager = new LinearLayoutManager(getContext());
+                                recyclerView.setLayoutManager(layoutManager);
+                                mAdapter = new PaymentAdapter(notPay);
+                                recyclerView.setAdapter(mAdapter);
+                                break;
+                            }
+
+                        }
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+
+
         return paymentsView;
     }
 
@@ -121,7 +185,7 @@ public class PaymentsFragment extends Fragment{
         ArrayAdapter<CharSequence> adapterPay = ArrayAdapter.createFromResource(getContext(),
                 R.array.pay_array, android.R.layout.simple_spinner_item);
         adapterPay.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        filterSpinner.setAdapter(adapterPay);
+        paySpinner.setAdapter(adapterPay);
     }
 }
 
