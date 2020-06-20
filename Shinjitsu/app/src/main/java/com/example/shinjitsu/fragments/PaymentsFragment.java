@@ -123,41 +123,39 @@ public class PaymentsFragment extends Fragment{
                         break;
                     case 1:
                        //payments.remove(i).isStatus();
-                        for (PaymentEntity p: payments) {
-                            if(p.isStatus() == true){
+                        ArrayList<PaymentEntity> pay = new ArrayList<>();
 
-                                ArrayList<PaymentEntity> pay = new ArrayList<>();
-                                pay.add(p);
-                                
-                                recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                                recyclerView.setHasFixedSize(true);
-                                layoutManager = new LinearLayoutManager(getContext());
-                                recyclerView.setLayoutManager(layoutManager);
-                                mAdapter = new PaymentAdapter(pay);
-                                recyclerView.setAdapter(mAdapter);
-                                break;
-                            }
-
-                        }
-
-                    case 2:
                         for (PaymentEntity p: payments) {
                             if(p.isStatus()){
-
-                                ArrayList<PaymentEntity> notPay = new ArrayList<>();
-                                notPay.add(p);
-
-                                recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                                recyclerView.setHasFixedSize(true);
-                                layoutManager = new LinearLayoutManager(getContext());
-                                recyclerView.setLayoutManager(layoutManager);
-                                mAdapter = new PaymentAdapter(notPay);
-                                recyclerView.setAdapter(mAdapter);
-                                break;
+                                pay.add(p);
                             }
 
                         }
 
+                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                        recyclerView.setHasFixedSize(true);
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        mAdapter = new PaymentAdapter(pay);
+                        recyclerView.setAdapter(mAdapter);
+                        break;
+
+                    case 2:
+                        ArrayList<PaymentEntity> notPay = new ArrayList<>();
+
+                        for (PaymentEntity p: payments) {
+                            if(!p.isStatus()){
+                                notPay.add(p);
+                            }
+                        }
+
+                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                        recyclerView.setHasFixedSize(true);
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        mAdapter = new PaymentAdapter(notPay);
+                        recyclerView.setAdapter(mAdapter);
+                        break;
                 }
 
             }
