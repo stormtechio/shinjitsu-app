@@ -128,7 +128,7 @@ public class PaymentsFragment extends Fragment{
 
                                 ArrayList<PaymentEntity> pay = new ArrayList<>();
                                 pay.add(p);
-                                
+
                                 recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
                                 recyclerView.setHasFixedSize(true);
                                 layoutManager = new LinearLayoutManager(getContext());
