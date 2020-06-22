@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -78,24 +79,123 @@ public class PaymentsFragment extends Fragment{
                         mAdapter = new PaymentAdapter(payments);
                         recyclerView.setAdapter(mAdapter);
                         break;
-                    case 1:
-                        Collections.sort(payments, new SortByName());
-                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                        recyclerView.setHasFixedSize(true);
-                        layoutManager = new LinearLayoutManager(getContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        mAdapter = new PaymentAdapter(payments);
-                        recyclerView.setAdapter(mAdapter);
-                        break;
+                   case 1:
+
+                       Collections.sort(payments, new SortByName());
+
+
+                       if(paySpinner.getSelectedItemPosition() == 0){
+                           recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                           recyclerView.setHasFixedSize(true);
+                           layoutManager = new LinearLayoutManager(getContext());
+                           recyclerView.setLayoutManager(layoutManager);
+                           mAdapter = new PaymentAdapter(payments);
+                           recyclerView.setAdapter(mAdapter);
+                           break;
+
+                       } else if(paySpinner.getSelectedItemPosition() == 1) {
+
+                           ArrayList<PaymentEntity> pay = new ArrayList<>();
+
+                           for (PaymentEntity p : payments) {
+                               if (p.isStatus()) {
+                                   pay.add(p);
+                               }
+                           }
+                           Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+                           Collections.sort(payments, new SortByName());
+                           recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                           recyclerView.setHasFixedSize(true);
+                           layoutManager = new LinearLayoutManager(getContext());
+                           recyclerView.setLayoutManager(layoutManager);
+                           mAdapter = new PaymentAdapter(pay);
+                           recyclerView.setAdapter(mAdapter);
+                           break;
+
+                       }else if(paySpinner.getSelectedItemPosition() == 2){
+
+                           ArrayList<PaymentEntity> pay = new ArrayList<>();
+
+                           for (PaymentEntity p : payments) {
+                               if (!p.isStatus()) {
+                                   pay.add(p);
+                               }
+                           }
+                           Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+                           Collections.sort(payments, new SortByName());
+                           recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                           recyclerView.setHasFixedSize(true);
+                           layoutManager = new LinearLayoutManager(getContext());
+                           recyclerView.setLayoutManager(layoutManager);
+                           mAdapter = new PaymentAdapter(pay);
+                           recyclerView.setAdapter(mAdapter);
+                           break;
+
+
+                       }
+
+
+
                     case 2:
+
                         Collections.sort(payments, new ReverseByName());
-                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                        recyclerView.setHasFixedSize(true);
-                        layoutManager = new LinearLayoutManager(getContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        mAdapter = new PaymentAdapter(payments);
-                        recyclerView.setAdapter(mAdapter);
-                        break;
+//                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+//                        recyclerView.setHasFixedSize(true);
+//                        layoutManager = new LinearLayoutManager(getContext());
+//                        recyclerView.setLayoutManager(layoutManager);
+//                        mAdapter = new PaymentAdapter(payments);
+//                        recyclerView.setAdapter(mAdapter);
+//                        break;
+
+                        if(paySpinner.getSelectedItemPosition() == 0){
+                            recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                            recyclerView.setHasFixedSize(true);
+                            layoutManager = new LinearLayoutManager(getContext());
+                            recyclerView.setLayoutManager(layoutManager);
+                            mAdapter = new PaymentAdapter(payments);
+                            recyclerView.setAdapter(mAdapter);
+                            break;
+
+                        } else if(paySpinner.getSelectedItemPosition() == 1) {
+
+                            ArrayList<PaymentEntity> pay = new ArrayList<>();
+
+                            for (PaymentEntity p : payments) {
+                                if (p.isStatus()) {
+                                    pay.add(p);
+                                }
+                            }
+                            Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+                            Collections.sort(payments, new ReverseByName());
+                            recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                            recyclerView.setHasFixedSize(true);
+                            layoutManager = new LinearLayoutManager(getContext());
+                            recyclerView.setLayoutManager(layoutManager);
+                            mAdapter = new PaymentAdapter(pay);
+                            recyclerView.setAdapter(mAdapter);
+                            break;
+
+                        }else if(paySpinner.getSelectedItemPosition() == 2){
+
+                            ArrayList<PaymentEntity> pay = new ArrayList<>();
+
+                            for (PaymentEntity p : payments) {
+                                if (!p.isStatus()) {
+                                    pay.add(p);
+                                }
+                            }
+                            Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+                            Collections.sort(payments, new ReverseByName());
+                            recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
+                            recyclerView.setHasFixedSize(true);
+                            layoutManager = new LinearLayoutManager(getContext());
+                            recyclerView.setLayoutManager(layoutManager);
+                            mAdapter = new PaymentAdapter(pay);
+                            recyclerView.setAdapter(mAdapter);
+                            break;
+
+
+                        }
                 }
 
             }
@@ -104,11 +204,10 @@ public class PaymentsFragment extends Fragment{
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-        
+
         paySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
 
                 switch (i){
                     case 0:
@@ -127,9 +226,17 @@ public class PaymentsFragment extends Fragment{
                             if(p.isStatus()){
                                 pay.add(p);
                             }
+//                            if(p.isStatus() && filterSpinner.getSelectedItemPosition() == 1){
+//                                pay.add(p);
+//                                Collections.sort(pay, new SortByName());
+//                            }
+//                            if(p.isStatus() && filterSpinner.getSelectedItemPosition() == 2){
+//                                pay.add(p);
+//                                Collections.sort(pay, new ReverseByName());
+//                            }
 
                         }
-
+                       // Collections.sort(pay, new SortByName());
                         recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
                         recyclerView.setHasFixedSize(true);
                         layoutManager = new LinearLayoutManager(getContext());
@@ -145,6 +252,15 @@ public class PaymentsFragment extends Fragment{
                             if(!p.isStatus()){
                                 notPay.add(p);
                             }
+//                            if(!p.isStatus() && filterSpinner.getSelectedItemPosition() == 1){
+//                                notPay.add(p);
+//                                Collections.sort(notPay, new SortByName());
+//                            }
+//                            if(!p.isStatus() && filterSpinner.getSelectedItemPosition() == 2){
+//                                Toast.makeText(getContext(),  "OII", Toast.LENGTH_LONG).show();
+//                                notPay.add(p);
+//                                Collections.sort(notPay, new ReverseByName());
+//                            }
                         }
                         recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
                         recyclerView.setHasFixedSize(true);
