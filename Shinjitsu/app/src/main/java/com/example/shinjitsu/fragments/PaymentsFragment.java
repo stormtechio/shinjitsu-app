@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -72,25 +71,14 @@ public class PaymentsFragment extends Fragment{
 
                 switch (i){
                     case 0:
-                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                        recyclerView.setHasFixedSize(true);
-                        layoutManager = new LinearLayoutManager(getContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        mAdapter = new PaymentAdapter(payments);
-                        recyclerView.setAdapter(mAdapter);
+                        recycler(payments, paymentsView);
                         break;
                    case 1:
 
                        Collections.sort(payments, new SortByName());
 
-
                        if(paySpinner.getSelectedItemPosition() == 0){
-                           recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                           recyclerView.setHasFixedSize(true);
-                           layoutManager = new LinearLayoutManager(getContext());
-                           recyclerView.setLayoutManager(layoutManager);
-                           mAdapter = new PaymentAdapter(payments);
-                           recyclerView.setAdapter(mAdapter);
+                           recycler(payments, paymentsView);
                            break;
 
                        } else if(paySpinner.getSelectedItemPosition() == 1) {
@@ -102,58 +90,34 @@ public class PaymentsFragment extends Fragment{
                                    pay.add(p);
                                }
                            }
-                           Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+
                            Collections.sort(payments, new SortByName());
-                           recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                           recyclerView.setHasFixedSize(true);
-                           layoutManager = new LinearLayoutManager(getContext());
-                           recyclerView.setLayoutManager(layoutManager);
-                           mAdapter = new PaymentAdapter(pay);
-                           recyclerView.setAdapter(mAdapter);
+                           recycler(pay, paymentsView);
                            break;
 
                        }else if(paySpinner.getSelectedItemPosition() == 2){
 
-                           ArrayList<PaymentEntity> pay = new ArrayList<>();
+                           ArrayList<PaymentEntity> notPay = new ArrayList<>();
 
                            for (PaymentEntity p : payments) {
                                if (!p.isStatus()) {
-                                   pay.add(p);
+                                   notPay.add(p);
                                }
                            }
-                           Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
+
                            Collections.sort(payments, new SortByName());
-                           recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                           recyclerView.setHasFixedSize(true);
-                           layoutManager = new LinearLayoutManager(getContext());
-                           recyclerView.setLayoutManager(layoutManager);
-                           mAdapter = new PaymentAdapter(pay);
-                           recyclerView.setAdapter(mAdapter);
+                           recycler(notPay, paymentsView);
                            break;
 
-
                        }
-
 
 
                     case 2:
 
                         Collections.sort(payments, new ReverseByName());
-//                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-//                        recyclerView.setHasFixedSize(true);
-//                        layoutManager = new LinearLayoutManager(getContext());
-//                        recyclerView.setLayoutManager(layoutManager);
-//                        mAdapter = new PaymentAdapter(payments);
-//                        recyclerView.setAdapter(mAdapter);
-//                        break;
 
                         if(paySpinner.getSelectedItemPosition() == 0){
-                            recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                            recyclerView.setHasFixedSize(true);
-                            layoutManager = new LinearLayoutManager(getContext());
-                            recyclerView.setLayoutManager(layoutManager);
-                            mAdapter = new PaymentAdapter(payments);
-                            recyclerView.setAdapter(mAdapter);
+                            recycler(payments, paymentsView);
                             break;
 
                         } else if(paySpinner.getSelectedItemPosition() == 1) {
@@ -165,33 +129,21 @@ public class PaymentsFragment extends Fragment{
                                     pay.add(p);
                                 }
                             }
-                            Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
                             Collections.sort(payments, new ReverseByName());
-                            recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                            recyclerView.setHasFixedSize(true);
-                            layoutManager = new LinearLayoutManager(getContext());
-                            recyclerView.setLayoutManager(layoutManager);
-                            mAdapter = new PaymentAdapter(pay);
-                            recyclerView.setAdapter(mAdapter);
+                            recycler(pay, paymentsView);
                             break;
 
                         }else if(paySpinner.getSelectedItemPosition() == 2){
 
-                            ArrayList<PaymentEntity> pay = new ArrayList<>();
+                            ArrayList<PaymentEntity> notPay = new ArrayList<>();
 
                             for (PaymentEntity p : payments) {
                                 if (!p.isStatus()) {
-                                    pay.add(p);
+                                    notPay.add(p);
                                 }
                             }
-                            Toast.makeText(getContext(), "" + filterSpinner.getSelectedItemPosition(), Toast.LENGTH_LONG).show();
                             Collections.sort(payments, new ReverseByName());
-                            recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                            recyclerView.setHasFixedSize(true);
-                            layoutManager = new LinearLayoutManager(getContext());
-                            recyclerView.setLayoutManager(layoutManager);
-                            mAdapter = new PaymentAdapter(pay);
-                            recyclerView.setAdapter(mAdapter);
+                            recycler(notPay, paymentsView);
                             break;
 
 
@@ -211,38 +163,18 @@ public class PaymentsFragment extends Fragment{
 
                 switch (i){
                     case 0:
-                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                        recyclerView.setHasFixedSize(true);
-                        layoutManager = new LinearLayoutManager(getContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        mAdapter = new PaymentAdapter(payments);
-                        recyclerView.setAdapter(mAdapter);
+                        recycler(payments, paymentsView);
                         break;
                     case 1:
-                       //payments.remove(i).isStatus();
                         ArrayList<PaymentEntity> pay = new ArrayList<>();
 
                         for (PaymentEntity p: payments) {
                             if(p.isStatus()){
                                 pay.add(p);
                             }
-//                            if(p.isStatus() && filterSpinner.getSelectedItemPosition() == 1){
-//                                pay.add(p);
-//                                Collections.sort(pay, new SortByName());
-//                            }
-//                            if(p.isStatus() && filterSpinner.getSelectedItemPosition() == 2){
-//                                pay.add(p);
-//                                Collections.sort(pay, new ReverseByName());
-//                            }
 
                         }
-                       // Collections.sort(pay, new SortByName());
-                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                        recyclerView.setHasFixedSize(true);
-                        layoutManager = new LinearLayoutManager(getContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        mAdapter = new PaymentAdapter(pay);
-                        recyclerView.setAdapter(mAdapter);
+                        recycler(pay, paymentsView);
                         break;
 
                     case 2:
@@ -252,22 +184,9 @@ public class PaymentsFragment extends Fragment{
                             if(!p.isStatus()){
                                 notPay.add(p);
                             }
-//                            if(!p.isStatus() && filterSpinner.getSelectedItemPosition() == 1){
-//                                notPay.add(p);
-//                                Collections.sort(notPay, new SortByName());
-//                            }
-//                            if(!p.isStatus() && filterSpinner.getSelectedItemPosition() == 2){
-//                                Toast.makeText(getContext(),  "OII", Toast.LENGTH_LONG).show();
-//                                notPay.add(p);
-//                                Collections.sort(notPay, new ReverseByName());
-//                            }
+
                         }
-                        recyclerView = paymentsView.findViewById(R.id.recycler_view_payments);
-                        recyclerView.setHasFixedSize(true);
-                        layoutManager = new LinearLayoutManager(getContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        mAdapter = new PaymentAdapter(notPay);
-                        recyclerView.setAdapter(mAdapter);
+                        recycler(notPay, paymentsView);
                         break;
                 }
 
@@ -298,7 +217,17 @@ public class PaymentsFragment extends Fragment{
         adapterPay.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         paySpinner.setAdapter(adapterPay);
     }
-}
 
+
+    private void recycler (List payments, View view){
+        recyclerView = view.findViewById(R.id.recycler_view_payments);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new PaymentAdapter(payments);
+        recyclerView.setAdapter(mAdapter);
+
+    }
+}
 
 
