@@ -60,8 +60,6 @@ public class PaymentsFragment extends Fragment{
         filterSpinner = paymentsView.findViewById(R.id.filter_spinner);
         paySpinner = paymentsView.findViewById(R.id.filter_pay_spinner);
 
-
-
         adapterFilter();
         adapterPay();
 
@@ -74,7 +72,6 @@ public class PaymentsFragment extends Fragment{
                         recycler(payments, paymentsView);
                         break;
                    case 1:
-
                        Collections.sort(payments, new SortByName());
 
                        if(paySpinner.getSelectedItemPosition() == 0){
@@ -90,7 +87,6 @@ public class PaymentsFragment extends Fragment{
                                    pay.add(p);
                                }
                            }
-
                            Collections.sort(payments, new SortByName());
                            recycler(pay, paymentsView);
                            break;
@@ -104,16 +100,12 @@ public class PaymentsFragment extends Fragment{
                                    notPay.add(p);
                                }
                            }
-
                            Collections.sort(payments, new SortByName());
                            recycler(notPay, paymentsView);
                            break;
 
                        }
-
-
                     case 2:
-
                         Collections.sort(payments, new ReverseByName());
 
                         if(paySpinner.getSelectedItemPosition() == 0){
@@ -145,8 +137,6 @@ public class PaymentsFragment extends Fragment{
                             Collections.sort(payments, new ReverseByName());
                             recycler(notPay, paymentsView);
                             break;
-
-
                         }
                 }
 
@@ -172,11 +162,9 @@ public class PaymentsFragment extends Fragment{
                             if(p.isStatus()){
                                 pay.add(p);
                             }
-
                         }
                         recycler(pay, paymentsView);
                         break;
-
                     case 2:
                         ArrayList<PaymentEntity> notPay = new ArrayList<>();
 
@@ -184,20 +172,16 @@ public class PaymentsFragment extends Fragment{
                             if(!p.isStatus()){
                                 notPay.add(p);
                             }
-
                         }
                         recycler(notPay, paymentsView);
                         break;
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
-
 
         return paymentsView;
     }
@@ -220,6 +204,7 @@ public class PaymentsFragment extends Fragment{
 
 
     private void recycler (List payments, View view){
+
         recyclerView = view.findViewById(R.id.recycler_view_payments);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());

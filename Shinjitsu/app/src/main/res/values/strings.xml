@@ -32,6 +32,8 @@
     <string name="states">Estados</string>
     <string name="pay">Pagar</string>
     <string name="filter">Filtros</string>
+    <string name="profile">Perfil</string>
+    <string name="exit">Sair</string>
     <string-array name="states_array">
         <item></item>
         <item>CE</item>

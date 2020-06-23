@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/student"
-        android:title="@string/students"/>
-    <item android:id="@+id/payment"
-        android:title="@string/payments"/>
-    <item android:id="@+id/option"
-        android:title="@string/options"/>
+
+    <group android:checkableBehavior="single">
+
+        <group
+            android:id="@+id/nav_g1"
+            android:checkableBehavior="single">
+            <item
+                android:id="@+id/profile"
+                android:title="@string/profile" />
+        </group>
+
+        <group
+            android:id="@+id/nav_g2"
+            android:checkableBehavior="single">
+            <item android:id="@+id/student"
+                android:title="@string/students"/>
+            <item
+                android:id="@+id/payment"
+                android:title="@string/payments" />
+            <item android:id="@+id/option"
+                android:title="@string/options"/>
+        </group>
+
+        <group
+            android:id="@+id/nav_g3"
+            android:checkableBehavior="single">
+            <item android:id="@+id/exit"
+                android:title="@string/exit"/>
+        </group>
+
+    </group>
+
+
 </menu>
