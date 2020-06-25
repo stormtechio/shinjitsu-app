@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.shinjitsu.fragments.PaymentsFragment;
+import com.example.shinjitsu.fragments.ProfileFragment;
 import com.example.shinjitsu.fragments.StudentFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -55,6 +56,14 @@ public class InitialActivity extends AppCompatActivity {
 
                 switch(id)
                 {
+                    case R.id.profile:
+                        // drawerLayout.closeDrawer(Gravity.LEFT);
+
+                        // Instanciação de algum fragmento
+                        ProfileFragment profileFragment = new ProfileFragment();
+                        // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
+                        fragmentTransaction.replace(R.id.content_fragments, profileFragment);
+                        break;
                     case R.id.student:
                        // drawerLayout.closeDrawer(Gravity.LEFT);
 
@@ -73,6 +82,10 @@ public class InitialActivity extends AppCompatActivity {
                     case R.id.option:
                       //  drawerLayout.closeDrawer(Gravity.LEFT);
                         Toast.makeText(getApplicationContext(), "Opções",Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.exit:
+                        //  drawerLayout.closeDrawer(Gravity.LEFT);
+                        Toast.makeText(getApplicationContext(), "Você está deslogado",Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         return true;

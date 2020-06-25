@@ -34,6 +34,7 @@
     <string name="filter">Filtros</string>
     <string name="profile">Perfil</string>
     <string name="exit">Sair</string>
+    <string name="save">Salvar</string>
     <string-array name="states_array">
         <item></item>
         <item>CE</item>
