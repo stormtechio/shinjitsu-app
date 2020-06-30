@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.shinjitsu.fragments.ListStudentsFragment;
 import com.example.shinjitsu.fragments.PaymentsFragment;
 import com.example.shinjitsu.fragments.ProfileFragment;
 import com.example.shinjitsu.fragments.StudentFragment;
@@ -64,13 +65,21 @@ public class InitialActivity extends AppCompatActivity {
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, profileFragment);
                         break;
+
                     case R.id.student:
                        // drawerLayout.closeDrawer(Gravity.LEFT);
-
                         // Instanciação de algum fragmento
                         StudentFragment studentFragment = new StudentFragment();
                         // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
                         fragmentTransaction.replace(R.id.content_fragments, studentFragment);
+                        break;
+
+                    case R.id.list_students:
+                        // drawerLayout.closeDrawer(Gravity.LEFT);
+                        // Instanciação de algum fragmento
+                        ListStudentsFragment listStudentsFragment = new ListStudentsFragment();
+                        // A transação troca (replace) o fragmento, o primeiro parâmetro é o container, nessa caso o container é o FrameLayout
+                        fragmentTransaction.replace(R.id.content_fragments, listStudentsFragment);
                         break;
                     case R.id.payment:
                        // drawerLayout.closeDrawer(Gravity.LEFT);

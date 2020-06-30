@@ -35,6 +35,7 @@
     <string name="profile">Perfil</string>
     <string name="exit">Sair</string>
     <string name="save">Salvar</string>
+    <string name="register_students">Cadastrar Alunos</string>
     <string-array name="states_array">
         <item></item>
         <item>CE</item>
