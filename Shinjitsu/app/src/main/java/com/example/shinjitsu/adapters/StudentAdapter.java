@@ -80,6 +80,22 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
 
                 try {
                     studentJSON.put("name", student.getName());
+                    studentJSON.put("age", student.getAge());
+                    studentJSON.put("responsible", student.getResponsible());
+                    studentJSON.put("street", student.getStreet());
+                    studentJSON.put("neighborhood", student.getNeighborhood());
+                    studentJSON.put("city", student.getCity());
+                    studentJSON.put("state", student.getState());
+                    studentJSON.put("number", student.getNumber());
+                    studentJSON.put("complement", student.getComplement());
+                    studentJSON.put("cellphone", student.getCellphone());
+                    studentJSON.put("email", student.getEmail());
+                    studentJSON.put("phone", student.getPhone());
+                    studentJSON.put("disease", student.isDisease());
+                    studentJSON.put("chronicDisease", student.isChronicDisease());
+                    studentJSON.put("surgery", student.isSurgery());
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -36,6 +36,20 @@ public class ListStudentsFragment extends Fragment {
         studentEntity.setName("Luninha fdp");
         studentEntity.setCellphone("12344");
         studentEntity.setResponsible("Saori");
+        studentEntity.setAge(12);
+        studentEntity.setChronicDisease(true);
+        studentEntity.setCity("Crateús");
+        studentEntity.setComplement("praca");
+        studentEntity.setDisease(false);
+        studentEntity.setEmail("luna@gmail.com");
+        studentEntity.setNeighborhood("djdjd");
+        studentEntity.setNumber(3);
+        studentEntity.setCellphone("55547555");
+        studentEntity.setState("cccc");
+        studentEntity.setStreet("iifi");
+        studentEntity.setPhone("789");
+        studentEntity.setSurgery(true);
+
 
         studentEntity2.setName("Einstein fdp");
         studentEntity2.setCellphone("1234477");
