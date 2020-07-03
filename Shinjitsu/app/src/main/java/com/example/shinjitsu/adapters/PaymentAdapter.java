@@ -1,11 +1,13 @@
 package com.example.shinjitsu.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,7 +22,6 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
 
     List<PaymentEntity> payments;
 
-
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView name;
@@ -34,9 +35,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
             imageView = itemView.findViewById(R.id.imageview_shape);
         }
     }
-
     public PaymentAdapter(List<PaymentEntity> payments) {
-
         this.payments = payments;
     }
 
@@ -51,10 +50,10 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
         final Context context = holder.cardView.getContext();
-        PaymentEntity payment = payments.get(position);
+        final PaymentEntity payment = payments.get(position);
 
         holder.name.setText(payment.getName());
 
@@ -64,7 +63,31 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
             holder.imageView.setImageResource(R.drawable.red_shape);
         }
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(payment.getName()).setTitle("Detalhe do Pagamento");
+
+                if(payment.isStatus() == false) {
+                    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View viewDialog = layoutInflater.inflate(R.layout.dialog, null);
+
+                    viewDialog.findViewById(R.id.button_pay).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            holder.imageView.setImageResource(R.drawable.green_shape);
+                            Toast.makeText(context, "Pago", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                builder.setView(viewDialog);
+                }
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
     }
 
     @Override

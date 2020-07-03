@@ -30,6 +30,8 @@
     <string name="register">Cadastrar</string>
     <string name="surgery">Você fez alguma cirurgia recentemente?</string>
     <string name="states">Estados</string>
+    <string name="pay">Pagar</string>
+    <string name="filter">Filtros</string>
     <string-array name="states_array">
         <item></item>
         <item>CE</item>
@@ -38,5 +40,18 @@
         <item>SP</item>
         <item>RJ</item>
     </string-array>
+    <string-array name="order_array">
+        <item></item>
+        <item>A-Z</item>
+        <item>Z-A</item>
+
+    </string-array>
+    <string-array name="pay_array">
+        <item></item>
+        <item>Pago</item>
+        <item>Não Pago</item>
+
+    </string-array>
+
 
 </resources>
