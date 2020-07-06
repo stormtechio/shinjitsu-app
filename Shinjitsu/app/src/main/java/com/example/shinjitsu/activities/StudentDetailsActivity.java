@@ -42,23 +42,7 @@ public class StudentDetailsActivity extends AppCompatActivity implements Seriali
 
         studentEntity =  getIntent().getStringExtra(STUDENTS);
 
-        name = findViewById(R.id.textview_student_name);
-        age = findViewById(R.id.textview_student_age);
-        responsible = findViewById(R.id.textview_student_responsible);
-        street = findViewById(R.id.textview_student_street);
-        neighborhood = findViewById(R.id.textview_student_neighborhood);
-        city = findViewById(R.id.textview_student_city);
-        state = findViewById(R.id.textview_student_state);
-        number = findViewById(R.id.textview_student_number);
-        complement = findViewById(R.id.textview_student_complement);
-        cellphone = findViewById(R.id.textview_student_cellphone);
-        email = findViewById(R.id.textview_student_email);
-        phone = findViewById(R.id.textview_student_phone);
-        disease = findViewById(R.id.textview_student_disease);
-        chronicDisease = findViewById(R.id.textview_student_chronic_disease);
-        surgery = findViewById(R.id.textview_student_surgery);
-
-
+        findView();
 
         try {
 
@@ -102,7 +86,25 @@ public class StudentDetailsActivity extends AppCompatActivity implements Seriali
             e.printStackTrace();
         }
 
+    }
+    
+    public void findView(){
 
+        name = findViewById(R.id.textview_student_name);
+        age = findViewById(R.id.textview_student_age);
+        responsible = findViewById(R.id.textview_student_responsible);
+        street = findViewById(R.id.textview_student_street);
+        neighborhood = findViewById(R.id.textview_student_neighborhood);
+        city = findViewById(R.id.textview_student_city);
+        state = findViewById(R.id.textview_student_state);
+        number = findViewById(R.id.textview_student_number);
+        complement = findViewById(R.id.textview_student_complement);
+        cellphone = findViewById(R.id.textview_student_cellphone);
+        email = findViewById(R.id.textview_student_email);
+        phone = findViewById(R.id.textview_student_phone);
+        disease = findViewById(R.id.textview_student_disease);
+        chronicDisease = findViewById(R.id.textview_student_chronic_disease);
+        surgery = findViewById(R.id.textview_student_surgery);
 
     }
 }
