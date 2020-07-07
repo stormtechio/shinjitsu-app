@@ -35,6 +35,7 @@ public class StudentDetailsActivity extends AppCompatActivity implements Seriali
     TextView surgery;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,8 +88,8 @@ public class StudentDetailsActivity extends AppCompatActivity implements Seriali
         }
 
     }
-    
-    public void findView(){
+
+    private void findView(){
 
         name = findViewById(R.id.textview_student_name);
         age = findViewById(R.id.textview_student_age);
@@ -107,4 +108,5 @@ public class StudentDetailsActivity extends AppCompatActivity implements Seriali
         surgery = findViewById(R.id.textview_student_surgery);
 
     }
+
 }

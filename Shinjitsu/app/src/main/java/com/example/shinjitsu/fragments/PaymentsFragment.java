@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shinjitsu.R;
 import com.example.shinjitsu.adapters.PaymentAdapter;
-import com.example.shinjitsu.collections.ReverseByName;
-import com.example.shinjitsu.collections.SortByName;
+import com.example.shinjitsu.collections.ReverseByNamePayments;
+import com.example.shinjitsu.collections.SortByNamePayments;
 import com.example.shinjitsu.entities.PaymentEntity;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class PaymentsFragment extends Fragment{
                         recycler(payments, paymentsView);
                         break;
                    case 1:
-                       Collections.sort(payments, new SortByName());
+                       Collections.sort(payments, new SortByNamePayments());
 
                        if(paySpinner.getSelectedItemPosition() == 0){
                            recycler(payments, paymentsView);
@@ -87,7 +87,7 @@ public class PaymentsFragment extends Fragment{
                                    pay.add(p);
                                }
                            }
-                           Collections.sort(payments, new SortByName());
+                           Collections.sort(payments, new SortByNamePayments());
                            recycler(pay, paymentsView);
                            break;
 
@@ -100,13 +100,13 @@ public class PaymentsFragment extends Fragment{
                                    notPay.add(p);
                                }
                            }
-                           Collections.sort(payments, new SortByName());
+                           Collections.sort(payments, new SortByNamePayments());
                            recycler(notPay, paymentsView);
                            break;
 
                        }
                     case 2:
-                        Collections.sort(payments, new ReverseByName());
+                        Collections.sort(payments, new ReverseByNamePayments());
 
                         if(paySpinner.getSelectedItemPosition() == 0){
                             recycler(payments, paymentsView);
@@ -121,7 +121,7 @@ public class PaymentsFragment extends Fragment{
                                     pay.add(p);
                                 }
                             }
-                            Collections.sort(payments, new ReverseByName());
+                            Collections.sort(payments, new ReverseByNamePayments());
                             recycler(pay, paymentsView);
                             break;
 
@@ -134,7 +134,7 @@ public class PaymentsFragment extends Fragment{
                                     notPay.add(p);
                                 }
                             }
-                            Collections.sort(payments, new ReverseByName());
+                            Collections.sort(payments, new ReverseByNamePayments());
                             recycler(notPay, paymentsView);
                             break;
                         }

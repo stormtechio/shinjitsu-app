@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shinjitsu.R;
 import com.example.shinjitsu.adapters.StudentAdapter;
+import com.example.shinjitsu.collections.ReverseByNameStudents;
+import com.example.shinjitsu.collections.SortByNameStudents;
 import com.example.shinjitsu.entities.StudentEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListStudentsFragment extends Fragment {
@@ -26,12 +32,16 @@ public class ListStudentsFragment extends Fragment {
     StudentEntity studentEntity3 = new StudentEntity();
     StudentEntity studentEntity4 = new StudentEntity();
     List<StudentEntity> students = new ArrayList<>();
+    Spinner filterSpinner;
 
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View listStudentsView = inflater.inflate(R.layout.list_students_fragment, container, false);
+
+        filterSpinner = listStudentsView.findViewById(R.id.filter_spinner_student);
+        adapterFilter();
 
         studentEntity.setName("Luninha fdp");
         studentEntity.setCellphone("12344");
@@ -59,20 +69,58 @@ public class ListStudentsFragment extends Fragment {
         studentEntity3.setCellphone("12344555");
         studentEntity3.setResponsible("Saoriiiiii");
 
+        studentEntity4.setName("Zachorrinho fdp");
+        studentEntity4.setCellphone("12344555");
+        studentEntity4.setResponsible("Saoriiiiii");
+
         students.add(studentEntity);
         students.add(studentEntity2);
         students.add(studentEntity3);
+        students.add(studentEntity4);
 
+        filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+                switch (i){
+                    case 0:
+                        recycler(students, listStudentsView);
+                        break;
+                    case 1:
+                        Collections.sort(students, new SortByNameStudents());
+                        recycler(students, listStudentsView);
+                        break;
+                    case 2:
+                        Collections.sort(students, new ReverseByNameStudents());
+                        recycler(students, listStudentsView);
+                        break;
+                }
+            }
 
-        recyclerView = listStudentsView.findViewById(R.id.recycler_view_students);
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        return listStudentsView;
+    }
+
+    private void adapterFilter(){
+
+        ArrayAdapter<CharSequence> adapterFilter = ArrayAdapter.createFromResource(getContext(),
+                R.array.order_array, android.R.layout.simple_spinner_item);
+        adapterFilter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterSpinner.setAdapter(adapterFilter);
+    }
+
+    private void recycler(List students, View view){
+        recyclerView = view.findViewById(R.id.recycler_view_students);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         mAdapter = new StudentAdapter(students);
         recyclerView.setAdapter(mAdapter);
 
-
-        return listStudentsView;
     }
 }
