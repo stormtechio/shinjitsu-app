@@ -2,6 +2,7 @@ package com.example.shinjitsu.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class ListStudentsFragment extends Fragment {
     StudentEntity studentEntity3 = new StudentEntity();
     StudentEntity studentEntity4 = new StudentEntity();
     List<StudentEntity> students = new ArrayList<>();
-    List<StudentEntity> newStudent = new ArrayList<>();
+    List<StudentEntity> newStudent;
     Spinner filterSpinner;
     EditText editTextSearch;
     Button buttonSearch;
@@ -93,23 +94,64 @@ public class ListStudentsFragment extends Fragment {
 
 
 
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
+
+
+        buttonSearch.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.e("AAAAAAA", editTextSearch.getText().toString());
 
+                // Para cada texto novo criasse uma lista vazia
+                newStudent = new ArrayList<>();
                 for (StudentEntity s: students) {
-                    if(editTextSearch.getText().toString().equals(s.getName()) ||
-                            editTextSearch.getText().toString().equals(s.getResponsible())||
-                            editTextSearch.getText().toString().equals(s.getEmail()) ||
-                            editTextSearch.getText().toString().equals(s.getCity()) ||
-                            editTextSearch.getText().toString().equals(s.getState())
-                    ){
+                    String searchContent = editTextSearch.getText().toString();
+
+                    /*
+                     * Para cada Student de Students checar se o texto da busca está contida no atributo a qual se deseja comparar.
+                     * Nesse caso, comparar o nome fica
+                     * ~ s.getNome() [Pega o nome do aluno sendo atualmente verificado na lista, e esse objeto é do tipo String]
+                     * como s.getNome() é String, então pode-se usar o método contains() que pertence a classe String. Esse método
+                     * recebe uma String e retorna true se essa String está contida dentro de outra.
+                     *
+                     * Ex: String nome = "Einstein";
+                     *     String busca = "tei";
+                     *     boolean contemString = nome.contains(busca);
+                     *     if (contemString) println(nome + " contem a string ["+busca+"]");
+                     *     else println(nome + " NAO contem a string ["+busca+"]");
+                     *
+                     *
+                     * IMPORTANTE!
+                     * Verificar se cada atributo é do objeto é nulo antes de chamar contains(), caso contrário irá receber uma exceção de
+                     * NullPointerException. Caso seja Nulo uma solução pode ser setar o objeto como um valor vazio.
+                     *  if(s.getEmail() == null) s.setEmail("")
+                     *
+                     * Dica!
+                     * Transforme tudo pra minusculo. Assim se o usuario digitar errado, não precisa se preocupar com erros.
+                     */
+
+                    if(s.getName() == null) s.setName("");
+                    if(s.getEmail() == null) s.setEmail("");
+
+                    /* Dica!
+                     * Transforme tudo pra minusculo. Assim se o usuario digitar errado, não precisa se preocupar com erros e guarde numa variável
+                     * para futuras comparacoes.
+                     */
+                    String name = s.getName().toLowerCase();
+                    String email = s.getEmail().toLowerCase();
+
+                    if (name.contains(searchContent) ||
+                            email.contains(searchContent)) {
+
                         newStudent.add(s);
                         recycler(newStudent, listStudentsView);
+
                     }
 
+
+
+
                 }
+
             }
         });
 
