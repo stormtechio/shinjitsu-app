@@ -16,10 +16,27 @@
             android:id="@+id/filter_spinner_student"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="20dp"
             >
 
         </Spinner>
+
+        <EditText
+            android:id="@+id/edit_text_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Pesquisar"
+            android:layout_marginLeft="70dp">
+
+        </EditText>
+
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar">
+
+        </Button>
 
     </LinearLayout>
 

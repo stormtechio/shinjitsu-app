@@ -1,11 +1,14 @@
 package com.example.shinjitsu.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
@@ -32,7 +35,10 @@ public class ListStudentsFragment extends Fragment {
     StudentEntity studentEntity3 = new StudentEntity();
     StudentEntity studentEntity4 = new StudentEntity();
     List<StudentEntity> students = new ArrayList<>();
+    List<StudentEntity> newStudent = new ArrayList<>();
     Spinner filterSpinner;
+    EditText editTextSearch;
+    Button buttonSearch;
 
 
     @Override
@@ -40,8 +46,14 @@ public class ListStudentsFragment extends Fragment {
 
         final View listStudentsView = inflater.inflate(R.layout.list_students_fragment, container, false);
 
+
         filterSpinner = listStudentsView.findViewById(R.id.filter_spinner_student);
+        editTextSearch = listStudentsView.findViewById(R.id.edit_text_search);
+        buttonSearch = listStudentsView.findViewById(R.id.button_search);
+
         adapterFilter();
+
+
 
         studentEntity.setName("Luninha fdp");
         studentEntity.setCellphone("12344");
@@ -77,6 +89,31 @@ public class ListStudentsFragment extends Fragment {
         students.add(studentEntity2);
         students.add(studentEntity3);
         students.add(studentEntity4);
+
+
+
+
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("AAAAAAA", editTextSearch.getText().toString());
+
+                for (StudentEntity s: students) {
+                    if(editTextSearch.getText().toString().equals(s.getName()) ||
+                            editTextSearch.getText().toString().equals(s.getResponsible())||
+                            editTextSearch.getText().toString().equals(s.getEmail()) ||
+                            editTextSearch.getText().toString().equals(s.getCity()) ||
+                            editTextSearch.getText().toString().equals(s.getState())
+                    ){
+                        newStudent.add(s);
+                        recycler(newStudent, listStudentsView);
+                    }
+
+                }
+            }
+        });
+
+
 
         filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -123,4 +160,6 @@ public class ListStudentsFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
 
     }
+
+
 }
