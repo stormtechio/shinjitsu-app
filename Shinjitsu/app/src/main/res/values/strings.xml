@@ -2,8 +2,8 @@
     <string name="app_name">Shinjitsu</string>
     <string name="open" />
     <string name="close" />
-    <string name="identification"> Identificação</string>
     <string name="last_posts"> Últimas Postagens </string>
+    <string name="identification"> Cadastro de Estudantes</string>
     <string name="name">Nome</string>
     <string name="age">Idade</string>
     <string name="responsible">Responsável</string>
@@ -34,7 +34,7 @@
     <string name="pay">Pagar</string>
     <string name="filter">Filtros</string>
     <string-array name="states_array">
-        <item></item>
+        <item>Selecione o Estado...</item>
         <item>CE</item>
         <item>PI</item>
         <item>DF</item>
@@ -42,13 +42,13 @@
         <item>RJ</item>
     </string-array>
     <string-array name="order_array">
-        <item></item>
+        <item>Ordenar de..</item>
         <item>A-Z</item>
         <item>Z-A</item>
 
     </string-array>
     <string-array name="pay_array">
-        <item></item>
+        <item>Selecione o status...</item>
         <item>Pago</item>
         <item>Não Pago</item>
 
