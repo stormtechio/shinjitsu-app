@@ -2,7 +2,7 @@
     <string name="app_name">Shinjitsu</string>
     <string name="open" />
     <string name="close" />
-    <string name="identification"> Identificação</string>
+    <string name="identification"> Cadastro de Estudantes</string>
     <string name="name">Nome</string>
     <string name="age">Idade</string>
     <string name="responsible">Responsável</string>
