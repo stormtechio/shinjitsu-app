@@ -42,15 +42,15 @@
         <item>RJ</item>
     </string-array>
     <string-array name="order_array">
-        <item>Ordenar de..</item>
+        <item>Ordenar dados de:</item>
         <item>A-Z</item>
         <item>Z-A</item>
 
     </string-array>
     <string-array name="pay_array">
-        <item>Selecione o status...</item>
-        <item>Pago</item>
-        <item>Não Pago</item>
+        <item>Filtrar dados por items:</item>
+        <item>Pagos</item>
+        <item>Não Pagos</item>
 
     </string-array>
 
