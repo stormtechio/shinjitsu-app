@@ -36,6 +36,7 @@ public class ListStudentsFragment extends Fragment {
     StudentEntity studentEntity3 = new StudentEntity();
     StudentEntity studentEntity4 = new StudentEntity();
     List<StudentEntity> students = new ArrayList<>();
+    List<StudentEntity> prevStudents = new ArrayList<>();
     List<StudentEntity> newStudent;
     List<StudentEntity> newStudent2;
     List<StudentEntity> newStudent3;
@@ -109,60 +110,15 @@ public class ListStudentsFragment extends Fragment {
                 newStudent = new ArrayList<>();
 
                 for (StudentEntity s: students) {
+                    if(!disease.isChecked()){
+                        recycler(prevStudents, listStudentsView);
 
-
-
-                    if(disease.isChecked() == true){
-
-                        if(s.getName() != studentEntity.getName()) {
-
-                            if (s.isDisease() == true) {
-                                newStudent.add(s);
-                                recycler(newStudent, listStudentsView);
-                            }
-                        }
-                    }
-                    if(surgery.isChecked() == true){
-
-                        if(s.isSurgery() == true){
-                            newStudent.add(s);
-                            recycler(newStudent,listStudentsView);
-                        }
-//                        if(s.isSurgery() == true && s.isDisease() == false && s.isChronicDisease() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isSurgery() == true && s.isDisease() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isSurgery() == true && s.isChronicDisease() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-                    }
-                    if(chronicDisease.isChecked() == true){
-                        if(s.isChronicDisease() == true ){
-                            newStudent.add(s);
-                            recycler(newStudent,listStudentsView);
-                        }
-//                        if(s.isChronicDisease() == true && s.isDisease() == false && s.isSurgery() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isChronicDisease() == true && s.isDisease() == false ){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isChronicDisease() == true &&  s.isSurgery() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
+                        break;
+                    }else{
+                        prevStudents = newStudent;
+                        updateCheckboxFilters(s, listStudentsView);
                     }
 
-                    if( disease.isChecked() == false){
-                        recycler(students, listStudentsView);
-                    }
                 }
             }
         });
@@ -171,61 +127,14 @@ public class ListStudentsFragment extends Fragment {
            @Override
            public void onClick(View view) {
                newStudent = new ArrayList<>();
-
                for (StudentEntity s: students) {
-
-                   if(chronicDisease.isChecked() == true ){
-
-                       if(s.getName() != studentEntity.getName()) {
-
-                           if (s.isChronicDisease() == true) {
-                               newStudent.add(s);
-                               recycler(newStudent, listStudentsView);
-                           }
-                       }
+                   if(!chronicDisease.isChecked()){
+                       recycler(prevStudents, listStudentsView);
+                       break;
+                   }else{
+                       prevStudents = newStudent;
+                       updateCheckboxFilters(s, listStudentsView);
                    }
-                   if(surgery.isChecked() == true){
-                       if(s.isSurgery() == true ){
-                           newStudent.add(s);
-                           recycler(newStudent,listStudentsView);
-                       }
-//                       if(s.isSurgery() == true && s.isChronicDisease()==false && s.isDisease() == false){
-//                           newStudent.add(s);
-//                           recycler(newStudent,listStudentsView);
-//                       }
-//                       if(s.isSurgery() == true && s.isChronicDisease()==false ){
-//                           newStudent.add(s);
-//                           recycler(newStudent,listStudentsView);
-//                       }
-//                       if(s.isSurgery() == true && s.isDisease() == false){
-//                           newStudent.add(s);
-//                           recycler(newStudent,listStudentsView);
-//                       }
-                   }
-                   if(disease.isChecked() == true ){
-                       if(s.isDisease() == true ){
-                           newStudent.add(s);
-                           recycler(newStudent,listStudentsView);
-                       }
-//                       if(s.isDisease() == true && s.isChronicDisease()==false && s.isSurgery() == false){
-//                           newStudent.add(s);
-//                           recycler(newStudent,listStudentsView);
-//                       }
-//                       if(s.isDisease() == true && s.isChronicDisease()==false){
-//                           newStudent.add(s);
-//                           recycler(newStudent,listStudentsView);
-//                       }
-//                       if(s.isDisease() == true && s.isSurgery() == false){
-//                           newStudent.add(s);
-//                           recycler(newStudent,listStudentsView);
-//                       }
-                   }
-
-                   if( chronicDisease.isChecked() == false){
-                       recycler(students, listStudentsView);
-                   }
-
-
                }
            }
        });
@@ -237,57 +146,13 @@ public class ListStudentsFragment extends Fragment {
                 newStudent = new ArrayList<>();
 
                 for (StudentEntity s: students) {
-
-                    if(surgery.isChecked() == true){
-
-                        if(s.getName() != studentEntity.getName()) {
-
-                            if (s.isSurgery() == true) {
-                                newStudent.add(s);
-                                recycler(newStudent, listStudentsView);
-                            }
-                        }
+                    if(!surgery.isChecked()){
+                        recycler(prevStudents, listStudentsView);
+                        break;
+                    }else{
+                        prevStudents = newStudent;
+                        updateCheckboxFilters(s, listStudentsView);
                     }
-                    if(disease.isChecked() == true){
-                        if(s.isDisease() == true){
-                            newStudent.add(s);
-                            recycler(newStudent,listStudentsView);
-                        }
-//                        if(s.isDisease() == true && s.isSurgery() == false && s.isChronicDisease() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isDisease() == true && s.isSurgery() == false ){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isDisease() == true &&  s.isChronicDisease() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-                    }
-                    if(chronicDisease.isChecked() == true){
-                        if(s.isChronicDisease() == true){
-                            newStudent.add(s);
-                            recycler(newStudent,listStudentsView);
-                        }
-//                        if(s.isChronicDisease() == true && s.isSurgery() == false && s.isDisease() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isChronicDisease() == true && s.isSurgery() == false ){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-//                        if(s.isChronicDisease() == true && s.isDisease() == false){
-//                            newStudent.add(s);
-//                            recycler(newStudent,listStudentsView);
-//                        }
-                    }
-                    if( surgery.isChecked() == false){
-                        recycler(students, listStudentsView);
-                    }
-
                 }
 
             }
@@ -417,6 +282,33 @@ public class ListStudentsFragment extends Fragment {
                 R.array.order_array, android.R.layout.simple_spinner_item);
         adapterFilter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         filterSpinner.setAdapter(adapterFilter);
+    }
+
+    private void updateCheckboxFilters(StudentEntity s, View listStudentsView){
+        if(surgery.isChecked() == true){
+            if (s.isSurgery() == true) {
+                newStudent.add(s);
+                recycler(newStudent, listStudentsView);
+            }
+        }
+
+        if(disease.isChecked() == true){
+            if(s.isDisease() == true){
+                newStudent.add(s);
+                recycler(newStudent,listStudentsView);
+            }
+
+        }
+        if(chronicDisease.isChecked() == true){
+            if(s.isChronicDisease() == true){
+                newStudent.add(s);
+                recycler(newStudent,listStudentsView);
+            }
+        }
+
+        if(!chronicDisease.isChecked() && !disease.isChecked() && !surgery.isChecked()) {
+            recycler(students,listStudentsView);
+        }
     }
 
     private void recycler(List students, View view){
