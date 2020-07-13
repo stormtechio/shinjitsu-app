@@ -2,13 +2,13 @@ package com.example.shinjitsu.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -37,9 +37,16 @@ public class ListStudentsFragment extends Fragment {
     StudentEntity studentEntity4 = new StudentEntity();
     List<StudentEntity> students = new ArrayList<>();
     List<StudentEntity> newStudent;
+    List<StudentEntity> newStudent2;
+    List<StudentEntity> newStudent3;
     Spinner filterSpinner;
     EditText editTextSearch;
     Button buttonSearch;
+    CheckBox surgery;
+    CheckBox chronicDisease;
+    CheckBox disease;
+
+
 
 
     @Override
@@ -47,10 +54,12 @@ public class ListStudentsFragment extends Fragment {
 
         final View listStudentsView = inflater.inflate(R.layout.list_students_fragment, container, false);
 
-
         filterSpinner = listStudentsView.findViewById(R.id.filter_spinner_student);
         editTextSearch = listStudentsView.findViewById(R.id.edit_text_search);
         buttonSearch = listStudentsView.findViewById(R.id.button_search);
+        surgery = listStudentsView.findViewById(R.id.checkbox_surgery);
+        chronicDisease = listStudentsView.findViewById(R.id.checkbox_chronic_disease);
+        disease = listStudentsView.findViewById(R.id.checkbox_disease);
 
         adapterFilter();
 
@@ -77,10 +86,12 @@ public class ListStudentsFragment extends Fragment {
         studentEntity2.setName("Einstein fdp");
         studentEntity2.setCellphone("1234477");
         studentEntity2.setResponsible("Saorii");
+        studentEntity2.setDisease(true);
 
         studentEntity3.setName("Cachorrinho fdp");
         studentEntity3.setCellphone("12344555");
         studentEntity3.setResponsible("Saoriiiiii");
+        studentEntity3.setDisease(false);
 
         studentEntity4.setName("Zachorrinho fdp");
         studentEntity4.setCellphone("12344555");
@@ -92,7 +103,195 @@ public class ListStudentsFragment extends Fragment {
         students.add(studentEntity4);
 
 
+        disease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newStudent = new ArrayList<>();
 
+                for (StudentEntity s: students) {
+
+
+
+                    if(disease.isChecked() == true){
+
+                        if(s.getName() != studentEntity.getName()) {
+
+                            if (s.isDisease() == true) {
+                                newStudent.add(s);
+                                recycler(newStudent, listStudentsView);
+                            }
+                        }
+                    }
+                    if(surgery.isChecked() == true){
+
+                        if(s.isSurgery() == true){
+                            newStudent.add(s);
+                            recycler(newStudent,listStudentsView);
+                        }
+//                        if(s.isSurgery() == true && s.isDisease() == false && s.isChronicDisease() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isSurgery() == true && s.isDisease() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isSurgery() == true && s.isChronicDisease() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+                    }
+                    if(chronicDisease.isChecked() == true){
+                        if(s.isChronicDisease() == true ){
+                            newStudent.add(s);
+                            recycler(newStudent,listStudentsView);
+                        }
+//                        if(s.isChronicDisease() == true && s.isDisease() == false && s.isSurgery() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isChronicDisease() == true && s.isDisease() == false ){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isChronicDisease() == true &&  s.isSurgery() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+                    }
+
+                    if( disease.isChecked() == false){
+                        recycler(students, listStudentsView);
+                    }
+                }
+            }
+        });
+
+       chronicDisease.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               newStudent = new ArrayList<>();
+
+               for (StudentEntity s: students) {
+
+                   if(chronicDisease.isChecked() == true ){
+
+                       if(s.getName() != studentEntity.getName()) {
+
+                           if (s.isChronicDisease() == true) {
+                               newStudent.add(s);
+                               recycler(newStudent, listStudentsView);
+                           }
+                       }
+                   }
+                   if(surgery.isChecked() == true){
+                       if(s.isSurgery() == true ){
+                           newStudent.add(s);
+                           recycler(newStudent,listStudentsView);
+                       }
+//                       if(s.isSurgery() == true && s.isChronicDisease()==false && s.isDisease() == false){
+//                           newStudent.add(s);
+//                           recycler(newStudent,listStudentsView);
+//                       }
+//                       if(s.isSurgery() == true && s.isChronicDisease()==false ){
+//                           newStudent.add(s);
+//                           recycler(newStudent,listStudentsView);
+//                       }
+//                       if(s.isSurgery() == true && s.isDisease() == false){
+//                           newStudent.add(s);
+//                           recycler(newStudent,listStudentsView);
+//                       }
+                   }
+                   if(disease.isChecked() == true ){
+                       if(s.isDisease() == true ){
+                           newStudent.add(s);
+                           recycler(newStudent,listStudentsView);
+                       }
+//                       if(s.isDisease() == true && s.isChronicDisease()==false && s.isSurgery() == false){
+//                           newStudent.add(s);
+//                           recycler(newStudent,listStudentsView);
+//                       }
+//                       if(s.isDisease() == true && s.isChronicDisease()==false){
+//                           newStudent.add(s);
+//                           recycler(newStudent,listStudentsView);
+//                       }
+//                       if(s.isDisease() == true && s.isSurgery() == false){
+//                           newStudent.add(s);
+//                           recycler(newStudent,listStudentsView);
+//                       }
+                   }
+
+                   if( chronicDisease.isChecked() == false){
+                       recycler(students, listStudentsView);
+                   }
+
+
+               }
+           }
+       });
+
+        surgery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                newStudent = new ArrayList<>();
+
+                for (StudentEntity s: students) {
+
+                    if(surgery.isChecked() == true){
+
+                        if(s.getName() != studentEntity.getName()) {
+
+                            if (s.isSurgery() == true) {
+                                newStudent.add(s);
+                                recycler(newStudent, listStudentsView);
+                            }
+                        }
+                    }
+                    if(disease.isChecked() == true){
+                        if(s.isDisease() == true){
+                            newStudent.add(s);
+                            recycler(newStudent,listStudentsView);
+                        }
+//                        if(s.isDisease() == true && s.isSurgery() == false && s.isChronicDisease() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isDisease() == true && s.isSurgery() == false ){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isDisease() == true &&  s.isChronicDisease() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+                    }
+                    if(chronicDisease.isChecked() == true){
+                        if(s.isChronicDisease() == true){
+                            newStudent.add(s);
+                            recycler(newStudent,listStudentsView);
+                        }
+//                        if(s.isChronicDisease() == true && s.isSurgery() == false && s.isDisease() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isChronicDisease() == true && s.isSurgery() == false ){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+//                        if(s.isChronicDisease() == true && s.isDisease() == false){
+//                            newStudent.add(s);
+//                            recycler(newStudent,listStudentsView);
+//                        }
+                    }
+                    if( surgery.isChecked() == false){
+                        recycler(students, listStudentsView);
+                    }
+
+                }
+
+            }
+        });
 
 
 
@@ -104,7 +303,8 @@ public class ListStudentsFragment extends Fragment {
                 // Para cada texto novo criasse uma lista vazia
                 newStudent = new ArrayList<>();
                 for (StudentEntity s: students) {
-                    String searchContent = editTextSearch.getText().toString();
+                    String searchContent = editTextSearch.getText().toString().toLowerCase();
+
 
                     /*
                      * Para cada Student de Students checar se o texto da busca está contida no atributo a qual se deseja comparar.
@@ -131,6 +331,15 @@ public class ListStudentsFragment extends Fragment {
 
                     if(s.getName() == null) s.setName("");
                     if(s.getEmail() == null) s.setEmail("");
+//                    if(s.getAge() == null) s.setAge(0);
+                    if(s.getCellphone() == null) s.setCellphone("");
+                    if(s.getCity() == null) s.setCity("");
+                    if(s.getComplement() == null) s.setComplement("");
+                    if(s.getNeighborhood() == null) s.setNeighborhood("");
+//                    if(s.getNumber() == 0) s.setNumber(0);
+                    if(s.getResponsible() == null) s.setResponsible("");
+                    if(s.getState() == null) s.setState("");
+                    if(s.getStreet() == null) s.setStreet("");
 
                     /* Dica!
                      * Transforme tudo pra minusculo. Assim se o usuario digitar errado, não precisa se preocupar com erros e guarde numa variável
@@ -138,20 +347,37 @@ public class ListStudentsFragment extends Fragment {
                      */
                     String name = s.getName().toLowerCase();
                     String email = s.getEmail().toLowerCase();
+                    String cellphone = s.getCellphone().toLowerCase();
+                    String city = s.getCity().toLowerCase();
+                    String complement = s.getComplement().toLowerCase();
+                    String neighborhood = s.getNeighborhood().toLowerCase();
+                    String responsible = s.getResponsible().toLowerCase();
+                    String state = s.getState().toLowerCase();
+                    String street = s.getStreet().toLowerCase();
+                    int number = s.getNumber();
+                    int age = s.getAge();
+
+                    Log.e("EEE o que", ""+ s.isDisease());
+
 
                     if (name.contains(searchContent) ||
-                            email.contains(searchContent)) {
+                            email.contains(searchContent) ||
+                            cellphone.contains(searchContent) ||
+                            city.contains(searchContent) ||
+                            complement.contains(searchContent) ||
+                            neighborhood.contains(searchContent) ||
+                            responsible.contains(searchContent)||
+                            state.contains(searchContent) ||
+                            street.contains(searchContent) ||
+                            number == Integer.parseInt(searchContent) ||
+                            age == Integer.parseInt(searchContent)
 
+
+                    ) {
                         newStudent.add(s);
                         recycler(newStudent, listStudentsView);
-
                     }
-
-
-
-
                 }
-
             }
         });
 
