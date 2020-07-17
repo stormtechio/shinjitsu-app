@@ -13,7 +13,9 @@
         <activity
             android:name=".InitialActivity"
             android:parentActivityName=".MainActivity" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+        <activity android:name=".activities.StudentDetailsActivity"/>
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

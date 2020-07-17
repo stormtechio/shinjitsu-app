@@ -33,6 +33,10 @@
     <string name="states">Estados</string>
     <string name="pay">Pagar</string>
     <string name="filter">Filtros</string>
+    <string name="profile">Perfil</string>
+    <string name="exit">Sair</string>
+    <string name="save">Salvar</string>
+    <string name="register_students">Cadastrar Alunos</string>
     <string-array name="states_array">
         <item>Selecione o Estado...</item>
         <item>CE</item>

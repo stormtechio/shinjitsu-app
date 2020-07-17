@@ -4,11 +4,11 @@ import com.example.shinjitsu.entities.PaymentEntity;
 
 import java.util.Comparator;
 
-public class SortByName implements Comparator<PaymentEntity> {
+public class ReverseByNamePayments implements Comparator<PaymentEntity> {
 
     @Override
     public int compare(PaymentEntity paymentEntity, PaymentEntity t1) {
-        return paymentEntity.getName().compareTo(t1.getName());
+        return t1.getName().compareTo(paymentEntity.getName());
     }
 
 }

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        android:layout_marginLeft="12dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/user">
+
+        </ImageView>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+         android:id="@+id/textview_student_name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
+        </TextView>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/age"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/responsible"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_responsible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/street"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_street"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/neighborhood"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_neighborhood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/state"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/complement"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_complement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cell_phone"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_cellphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/disease"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_disease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chronic_disease"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_chronic_disease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/surgery"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textview_student_surgery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
