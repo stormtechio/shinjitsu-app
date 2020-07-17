@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.shinjitsu.fragments.ListStudentsFragment;
+import com.example.shinjitsu.fragments.NewsFragment;
 import com.example.shinjitsu.fragments.PaymentsFragment;
 import com.example.shinjitsu.fragments.ProfileFragment;
 import com.example.shinjitsu.fragments.StudentFragment;
@@ -37,6 +38,12 @@ public class InitialActivity extends AppCompatActivity {
 
         // Criando apenas uma instancia de um gerenciador de fragmentos
         fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        NewsFragment newsFragment = new NewsFragment();
+        fragmentTransaction.replace(R.id.content_fragments, newsFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
 
         drawerLayout = (DrawerLayout)findViewById(R.id.activity_initial);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close);
