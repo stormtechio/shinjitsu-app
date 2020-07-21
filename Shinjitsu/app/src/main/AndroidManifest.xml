@@ -12,7 +12,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".InitialActivity"
-            android:parentActivityName=".MainActivity" /> <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+            android:parentActivityName=".MainActivity" />
+        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
+        <activity
+            android:name=".activities.UserRegister"
+            android:parentActivityName=".activities.UserRegister" />
         <activity android:name=".activities.StudentDetailsActivity"/>
         <activity android:name=".MainActivity">
 
