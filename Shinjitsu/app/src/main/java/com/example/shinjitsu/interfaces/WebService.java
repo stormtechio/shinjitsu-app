@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface GitHubService {
+public interface WebService {
 
     @GET("students/{student}/repos")
     Call<List<StudentRepository>> listRepos(@Path("student") String student);
