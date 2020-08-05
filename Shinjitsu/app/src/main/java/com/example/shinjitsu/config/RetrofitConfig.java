@@ -5,14 +5,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitConfig {
 
-    public static final String BASE_URL = "http://localhost:5000/";
+    private static final String PROTOCOL = "http";
+    private static final String DOMAIN = "127.0.0.1"; // localhost
+    private static final String PORT = "8080"; // Porta rodando no servidor
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
+    private static final String BASE_URL = PROTOCOL + "://" + DOMAIN + ":" + PORT + "/";
 
-//    GitHubService service = retrofit.create(GitHubService.class);
+    private static Retrofit retrofit;
 
-//    Call<List<StudentRepository>> repos = service.listRepos("octocat");
+    public static Retrofit getRetrofit() {
+        if(retrofit == null){
+            retrofit = new Retrofit.Builder()
+                        .baseUrl(BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+        }
+
+        return retrofit;
+
+    }
+
 }

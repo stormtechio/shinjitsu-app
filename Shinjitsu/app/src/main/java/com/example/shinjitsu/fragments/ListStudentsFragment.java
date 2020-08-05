@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,9 +22,12 @@ import com.example.shinjitsu.adapters.StudentAdapter;
 import com.example.shinjitsu.collections.ReverseByNameStudents;
 import com.example.shinjitsu.collections.SortByNameStudents;
 import com.example.shinjitsu.entities.StudentEntity;
+import com.example.shinjitsu.repository.StudentRepository;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class ListStudentsFragment extends Fragment {
