@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,10 +23,8 @@ import com.example.shinjitsu.collections.SortByNameStudents;
 import com.example.shinjitsu.entities.StudentEntity;
 import com.example.shinjitsu.repository.StudentRepository;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class ListStudentsFragment extends Fragment {
@@ -50,6 +47,8 @@ public class ListStudentsFragment extends Fragment {
     CheckBox surgery;
     CheckBox chronicDisease;
     CheckBox disease;
+    StudentRepository studentRepository = new StudentRepository();
+
 
 
 
@@ -68,44 +67,19 @@ public class ListStudentsFragment extends Fragment {
 
         adapterFilter();
 
+        Thread thread = new Thread(new Runnable() {
 
+            @Override
+            public void run() {
+                try  {
+                    students = studentRepository.getStudents();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
-        studentEntity.setName("Luninha fdp");
-        studentEntity.setCellphone("12344");
-        studentEntity.setResponsible("Saori");
-        studentEntity.setAge(12);
-        studentEntity.setChronicDisease(true);
-        studentEntity.setCity("Crateús");
-        studentEntity.setComplement("praca");
-        studentEntity.setDisease(false);
-        studentEntity.setEmail("luna@gmail.com");
-        studentEntity.setNeighborhood("djdjd");
-        studentEntity.setNumber(3);
-        studentEntity.setCellphone("55547555");
-        studentEntity.setState("cccc");
-        studentEntity.setStreet("iifi");
-        studentEntity.setPhone("789");
-        studentEntity.setSurgery(true);
-
-
-        studentEntity2.setName("Einstein fdp");
-        studentEntity2.setCellphone("1234477");
-        studentEntity2.setResponsible("Saorii");
-        studentEntity2.setDisease(true);
-
-        studentEntity3.setName("Cachorrinho fdp");
-        studentEntity3.setCellphone("12344555");
-        studentEntity3.setResponsible("Saoriiiiii");
-        studentEntity3.setDisease(false);
-
-        studentEntity4.setName("Zachorrinho fdp");
-        studentEntity4.setCellphone("12344555");
-        studentEntity4.setResponsible("Saoriiiiii");
-
-        students.add(studentEntity);
-        students.add(studentEntity2);
-        students.add(studentEntity3);
-        students.add(studentEntity4);
+        thread.start();
 
 
         disease.setOnClickListener(new View.OnClickListener() {

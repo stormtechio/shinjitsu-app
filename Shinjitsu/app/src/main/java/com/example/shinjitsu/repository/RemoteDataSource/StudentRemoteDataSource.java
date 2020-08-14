@@ -1,7 +1,5 @@
 package com.example.shinjitsu.repository.RemoteDataSource;
 
-import android.util.Log;
-
 import com.example.shinjitsu.config.RetrofitConfig;
 import com.example.shinjitsu.entities.StudentEntity;
 import com.example.shinjitsu.interfaces.WebService;
@@ -10,8 +8,6 @@ import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class StudentRemoteDataSource {
@@ -34,22 +30,24 @@ public class StudentRemoteDataSource {
      *
      * @return
      */
-    public List<StudentEntity> getStudents(){
+    public List<StudentEntity> getStudents() throws IOException {
         Call<List<StudentEntity>> studentsCall = webService.getStudents();
 
-        studentsCall.enqueue(new Callback<List<StudentEntity>>() {
-            @Override
-            public void onResponse(Call<List<StudentEntity>> call, Response<List<StudentEntity>> response) {
-                students = response.body();
-                if(!response.isSuccessful()){
+        students = studentsCall.execute().body();
 
-                }
-            }
-            @Override
-            public void onFailure(Call<List<StudentEntity>> call, Throwable t) {
-                Log.e("eeeeee", t.getLocalizedMessage());
-            }
-        });
+//        studentsCall.enqueue(new Callback<List<StudentEntity>>() {
+//            @Override
+//            public void onResponse(Call<List<StudentEntity>> call, Response<List<StudentEntity>> response) {
+//                students = response.body();
+//                if(!response.isSuccessful()){
+//                    Log.e("deeeeeeyy", "certo");
+//                }
+//            }
+//            @Override
+//            public void onFailure(Call<List<StudentEntity>> call, Throwable t) {
+//                Log.e("eeeeee", t.getLocalizedMessage());
+//            }
+//        });
 
         return students;
     }
