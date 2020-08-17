@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 user = editTextUser.getText().toString();
                 password = editTextPassword.getText().toString();
 
+                
                 if(user.equals("ayrton") && password.equals("123")){
 
                     intent = new Intent(getApplicationContext(), InitialActivity.class);

@@ -35,20 +35,6 @@ public class StudentRemoteDataSource {
 
         students = studentsCall.execute().body();
 
-//        studentsCall.enqueue(new Callback<List<StudentEntity>>() {
-//            @Override
-//            public void onResponse(Call<List<StudentEntity>> call, Response<List<StudentEntity>> response) {
-//                students = response.body();
-//                if(!response.isSuccessful()){
-//                    Log.e("deeeeeeyy", "certo");
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<List<StudentEntity>> call, Throwable t) {
-//                Log.e("eeeeee", t.getLocalizedMessage());
-//            }
-//        });
-
         return students;
     }
 

@@ -1,47 +1,33 @@
 package com.example.shinjitsu.repository.RemoteDataSource;
 
+import com.example.shinjitsu.config.RetrofitConfig;
 import com.example.shinjitsu.entities.UserEntity;
+import com.example.shinjitsu.interfaces.WebService;
 
+import java.io.IOException;
 import java.util.List;
 
-public abstract class UserRemoteDataSource {
+import retrofit2.Call;
+import retrofit2.Retrofit;
 
-    private List<UserEntity> userEntityList;
+public  class UserRemoteDataSource {
 
-    public UserEntity addUser(UserEntity userEntity){
+    private WebService webService;
+    private List<UserEntity> users;
+    private UserEntity userEntity;
 
-       userEntityList.add(userEntity);
-
-        return userEntity;
+    public UserRemoteDataSource(){
+        Retrofit retrofit = RetrofitConfig.getRetrofit();
+        this.webService = retrofit.create(WebService.class);
     }
 
-    public UserEntity updateUser(UserEntity userEntity){
+    public List<UserEntity> login() throws IOException {
+        Call<List<UserEntity>> usersCall = webService.login(userEntity);
 
-        for (UserEntity u: userEntityList) {
-            if(u.getId() == userEntity.getId()){
-                u = userEntity;
-                return u;
-            }
-        }
+        users = usersCall.execute().body();
 
-        return null;
+
+        return users;
     }
 
-    public UserEntity removeUser(UserEntity userEntity){
-
-        userEntityList.remove(userEntity);
-
-        return userEntity;
-    }
-
-    public UserEntity getUser(UserEntity userEntity){
-
-        for (UserEntity u: userEntityList) {
-            if(u.equals(userEntity)){
-                return userEntity;
-            }
-        }
-
-        return null;
-    }
 }

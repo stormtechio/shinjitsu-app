@@ -1,7 +1,5 @@
 package com.example.shinjitsu.repository;
 
-import android.util.Log;
-
 import com.example.shinjitsu.entities.StudentEntity;
 import com.example.shinjitsu.repository.RemoteDataSource.StudentRemoteDataSource;
 
@@ -13,6 +11,7 @@ public class StudentRepository {
     private StudentRemoteDataSource studentRemoteDataSource;
 
     public StudentRepository(){
+
         this.studentRemoteDataSource = new StudentRemoteDataSource();
     }
 
