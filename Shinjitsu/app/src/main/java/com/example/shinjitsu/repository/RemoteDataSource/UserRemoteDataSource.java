@@ -25,9 +25,42 @@ public  class UserRemoteDataSource {
         Call<List<UserEntity>> usersCall = webService.login(userEntity);
 
         users = usersCall.execute().body();
+//        users = (List<UserEntity>) usersCall.request().body();
+
+
+
+
+
+//        usersCall.enqueue(new Callback<List<UserEntity>>() {
+//           @Override
+//            public void onResponse(Call<List<UserEntity>> call, Response<List<UserEntity>> response) {
+//                users = response.body();
+//
+////                userEntity = (UserEntity) response.body();
+////
+////                userEntity.getUserName();
+////                userEntity.getPassword();
+//
+//                if(!response.isSuccessful()){
+//                    Log.e("deeeeeeyy", "certo");
+//                }
+//           }
+//            @Override
+//            public void onFailure(Call<List<UserEntity>> call, Throwable t) {
+//                Log.e("eeeeee", t.getLocalizedMessage());
+//            }
+//       });
+
 
 
         return users;
     }
+
+
+
+
+
+
+
 
 }

@@ -10,6 +10,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shinjitsu.activities.UserRegister;
+import com.example.shinjitsu.entities.UserEntity;
+import com.example.shinjitsu.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     Intent intent;
     Toast toast;
     Button buttonRegister;
+    UserRepository userRepository = new UserRepository();
+    List<UserEntity> users = new ArrayList<>();
+
+
+    UserEntity userEntity;
 
 
     @Override
@@ -41,17 +51,51 @@ public class MainActivity extends AppCompatActivity {
                 user = editTextUser.getText().toString();
                 password = editTextPassword.getText().toString();
 
-                
-                if(user.equals("ayrton") && password.equals("123")){
 
-                    intent = new Intent(getApplicationContext(), InitialActivity.class);
-                    startActivity(intent);
+                Thread thread = new Thread(new Runnable() {
 
-                }else{
+                    @Override
+                    public void run() {
+                        try  {
 
-                    toast = Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+                            users = userRepository.login();
+
+                            for (UserEntity u: users) {
+
+                                if(user.equals(u.getUserName()) && password.equals(u.getPassword())){
+
+                                    toast = Toast.makeText(getApplicationContext(), "Okay", Toast.LENGTH_SHORT);
+                                    intent = new Intent(getApplicationContext(), InitialActivity.class);
+                                    startActivity(intent);
+
+                                }else{
+
+                                    toast = Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos", Toast.LENGTH_SHORT);
+                                    toast.show();
+                                }
+
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                thread.start();
+
+
+
+//                if(user.equals("ayrton") && password.equals("123")){
+//
+//                    intent = new Intent(getApplicationContext(), InitialActivity.class);
+//                    startActivity(intent);
+//
+//                }else{
+//
+//                    toast = Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos", Toast.LENGTH_SHORT);
+//                    toast.show();
+//                }
                     }
         });
 
