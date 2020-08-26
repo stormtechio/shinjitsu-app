@@ -1,19 +1,27 @@
 package com.example.shinjitsu.repository.RemoteDataSource;
 
+import android.util.Log;
+
+import com.example.shinjitsu.adapters.StudentAdapter;
 import com.example.shinjitsu.config.RetrofitConfig;
 import com.example.shinjitsu.entities.StudentEntity;
 import com.example.shinjitsu.interfaces.WebService;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class StudentRemoteDataSource {
 
     private WebService webService;
-    private List<StudentEntity> students;
+
 
     /**
      * Construtor da classe, nele é recuperado as configurações do retrofit e utiliza
@@ -30,26 +38,9 @@ public class StudentRemoteDataSource {
      *
      * @return
      */
-    public List<StudentEntity> getStudents() throws IOException {
-        Call<List<StudentEntity>> studentsCall = webService.getStudents();
-
-        students = studentsCall.execute().body();
-
-//        studentsCall.enqueue(new Callback<List<StudentEntity>>() {
-//            @Override
-//            public void onResponse(Call<List<StudentEntity>> call, Response<List<StudentEntity>> response) {
-//                students = response.body();
-//                if(!response.isSuccessful()){
-//                    Log.e("deeeeeeyy", "certo");
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<List<StudentEntity>> call, Throwable t) {
-//                Log.e("eeeeee", t.getLocalizedMessage());
-//            }
-//        });
-
-        return students;
+    public ArrayList<StudentEntity> getStudents() throws IOException {
+        Call<ArrayList<StudentEntity>> studentsCall = this.webService.getStudents();
+        return studentsCall.execute().body();
     }
 
 
