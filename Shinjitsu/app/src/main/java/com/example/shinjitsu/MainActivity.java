@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shinjitsu.activities.UserRegister;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonLogin;
     Intent intent;
     Toast toast;
+    Button buttonRegister;
 
 
     @Override
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         editTextUser = (EditText) findViewById(R.id.edit_text_user);
         editTextPassword = (EditText) findViewById(R.id.edit_text_password);
         buttonLogin = (Button) findViewById(R.id.button_login);
+        buttonRegister = (Button) findViewById(R.id.button_register);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -50,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
                     }
         });
 
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                intent = new Intent(getApplicationContext(), UserRegister.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
