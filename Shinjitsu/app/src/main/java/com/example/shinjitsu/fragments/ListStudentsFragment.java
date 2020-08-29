@@ -21,6 +21,7 @@ import com.example.shinjitsu.adapters.StudentAdapter;
 import com.example.shinjitsu.collections.ReverseByNameStudents;
 import com.example.shinjitsu.collections.SortByNameStudents;
 import com.example.shinjitsu.entities.StudentEntity;
+import com.example.shinjitsu.repository.StudentRepository;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +47,8 @@ public class ListStudentsFragment extends Fragment {
     CheckBox surgery;
     CheckBox chronicDisease;
     CheckBox disease;
+    StudentRepository studentRepository = new StudentRepository();
+
 
 
 
@@ -66,43 +69,26 @@ public class ListStudentsFragment extends Fragment {
 
 
 
-        studentEntity.setName("Luninha fdp");
-        studentEntity.setCellphone("12344");
-        studentEntity.setResponsible("Saori");
-        studentEntity.setAge(12);
-        studentEntity.setChronicDisease(true);
-        studentEntity.setCity("Crateús");
-        studentEntity.setComplement("praca");
-        studentEntity.setDisease(false);
-        studentEntity.setEmail("luna@gmail.com");
-        studentEntity.setNeighborhood("djdjd");
-        studentEntity.setNumber(3);
-        studentEntity.setCellphone("55547555");
-        studentEntity.setState("cccc");
-        studentEntity.setStreet("iifi");
-        studentEntity.setPhone("789");
-        studentEntity.setSurgery(true);
+        Thread thread = new Thread(new Runnable() {
 
+            @Override
+            public void run() {
+                try  {
+                    Log.e("msg","------");
+                    students = studentRepository.getStudents();
+                    mAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        while(thread.isAlive()){
+            // FAÇA ALGO
+            // POR EXEMPLO, MOSTRAR UM GIF DE CARREGANDO
+        }
 
-        studentEntity2.setName("Einstein fdp");
-        studentEntity2.setCellphone("1234477");
-        studentEntity2.setResponsible("Saorii");
-        studentEntity2.setDisease(true);
-
-        studentEntity3.setName("Cachorrinho fdp");
-        studentEntity3.setCellphone("12344555");
-        studentEntity3.setResponsible("Saoriiiiii");
-        studentEntity3.setDisease(false);
-
-        studentEntity4.setName("Zachorrinho fdp");
-        studentEntity4.setCellphone("12344555");
-        studentEntity4.setResponsible("Saoriiiiii");
-
-        students.add(studentEntity);
-        students.add(studentEntity2);
-        students.add(studentEntity3);
-        students.add(studentEntity4);
-
+        recycler(students, listStudentsView);
 
         disease.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -312,6 +298,7 @@ public class ListStudentsFragment extends Fragment {
     }
 
     private void recycler(List students, View view){
+
         recyclerView = view.findViewById(R.id.recycler_view_students);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());

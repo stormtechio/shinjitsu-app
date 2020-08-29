@@ -1,7 +1,12 @@
 package com.example.shinjitsu.entities;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class StudentEntity {
 
+    @SerializedName(value = "title")
+    @Expose
     private String name;
     private int age;
     private String responsible;
@@ -17,6 +22,16 @@ public class StudentEntity {
     private boolean disease;
     private boolean chronicDisease;
     private boolean surgery;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;
