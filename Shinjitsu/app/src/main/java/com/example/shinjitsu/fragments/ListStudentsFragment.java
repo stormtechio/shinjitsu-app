@@ -67,20 +67,28 @@ public class ListStudentsFragment extends Fragment {
 
         adapterFilter();
 
+
+
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try  {
+                    Log.e("msg","------");
                     students = studentRepository.getStudents();
+                    mAdapter.notifyDataSetChanged();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
-
         thread.start();
+        while(thread.isAlive()){
+            // FAÇA ALGO
+            // POR EXEMPLO, MOSTRAR UM GIF DE CARREGANDO
+        }
 
+        recycler(students, listStudentsView);
 
         disease.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -290,6 +298,7 @@ public class ListStudentsFragment extends Fragment {
     }
 
     private void recycler(List students, View view){
+
         recyclerView = view.findViewById(R.id.recycler_view_students);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
